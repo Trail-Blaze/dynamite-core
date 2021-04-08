@@ -8,7 +8,7 @@ module.exports = (app) => {
         res.json(response.data);
       })
       .catch((e) => {
-        res.json();
+        res.json(require("../lib/timeline.json"));
       });
   });
 };
