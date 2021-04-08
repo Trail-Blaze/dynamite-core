@@ -8,24 +8,7 @@ module.exports = (app) => {
         res.json(response.data);
       })
       .catch((e) => {
-        res.json({
-          channels: {
-            "client-events": {
-              states: [
-                {
-                  state: {
-                    seasonNumber: 999999999,
-                    seasonTemplateId: "AthenaSeason:athenaseason0",
-                    seasonBegin: "0001-06-23T04:00:00Z",
-                    seasonEnd: "0001-07-23T04:00:00Z",
-                    seasonDisplayedEnd: "0001-07-23T04:00:00Z",
-                  },
-                },
-              ],
-            },
-          },
-          currentTime: new Date(),
-        });
+        res.json();
       });
   });
 };
