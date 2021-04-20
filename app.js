@@ -24,6 +24,8 @@ VERSION LOG:
 1.31.6 - DESTROY PARTS OF NEONITE CODE WITH ORIGINAL CODE 
 1.31.7 - EDIT ERRORS.JS PATH
 1.31.8 - REROUTE PATHS TO LIBS IN A MINIFIED WAY
+1.32.8 - ADDED ALL CORE MODULES
+1.32.9 - FIXED THEME BUG
 */
 
 const express = require("express"); // Used to activate the NodeJs express application libraries
@@ -36,13 +38,12 @@ const console = require("console"); // Console Library
 const { exec } = require("child_process"); // Shell execution library
 const app = express(); // Create an express application
 const runfiles = "./modules"; // All core libraries and scripts required for Blaze to run
-const theme = require("./ThemePacks/CurrentTheme.js"); // Load theme
 const path = require("path"); // Used for file extension filter
 
 // Definitions
 
 const REQ_LOGGING = true; // Request Logging is set to false by default
-const version = "1.32.8";
+const version = "1.32.9";
 const cyear = 2021;
 const authors = "Immanuel Garcia, Luke Harris, Sydney";
 const windowTitle = "Blaze Server";
@@ -220,6 +221,7 @@ async function init() {
               `${bcolor.OKCYAN}[OK] Importing: ${runfiles}/${filesList[range]}${bcolor.END}`
             );
           }
+          const theme = require("./ThemePacks/CurrentTheme.js")(app, port); // Load theme
           console.log("\n");
 
           // Replaced shit code with better code.
