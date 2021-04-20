@@ -42,7 +42,7 @@ const path = require("path"); // Used for file extension filter
 // Definitions
 
 const REQ_LOGGING = true; // Request Logging is set to false by default
-const version = "1.31.8";
+const version = "1.32.8";
 const cyear = 2021;
 const authors = "Immanuel Garcia, Luke Harris, Sydney";
 const windowTitle = "Blaze Server";
