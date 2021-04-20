@@ -36,7 +36,7 @@ module.exports = (app) => {
                 _noIndex: false,
                 alwaysShow: false,
                 "jcr:baseVersion": "a7ca237317f1e74e4b8154-226a-4450-a3cd-c77af841e798",
-                _activeDate: date.toISOString();,
+                _activeDate: date.toISOString(),
                 lastModified: date,
                 _locale: "en-US"
             },
