@@ -1,4 +1,4 @@
-const Profile = require("../profile");
+const Profile = require("../lib/profile");
 const errors = require("../structs/errors");
 const { ApiException } = errors;
 const fs = require("fs");
