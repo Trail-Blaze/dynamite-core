@@ -56,7 +56,7 @@ module.exports = (app) => {
                     ]
                 },
                 _title: 'emergencynotice',
-                _activeDate: date.toISOString();,
+                _activeDate: date.toISOString(),
                 lastModified: date,
                 _locale: 'en-US'
             }
