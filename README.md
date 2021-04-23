@@ -1,5 +1,5 @@
 # Dynamite Core Backend **Beta**
-TrailBlaze backend, the core of Blaze.
+Trailblaze Backend, the core of Blaze.
 
 
 ## To Run
