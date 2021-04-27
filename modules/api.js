@@ -1,3 +1,5 @@
+const axios = require('axios');
+
 module.exports = (app) => {
     //check server status
     app.get('/lightswitch/api/service/bulk/status', (req, res) => {
@@ -15,12 +17,27 @@ module.exports = (app) => {
     //version check
     app.get('/fortnite/api/v2/versioncheck/:version', (req, res) => {
         res.json({"type": "NO_UPDATE"})
+	});	
+	
+	
+	app.post('/api/v1/assets/Fortnite/:version/:netcl', (req, res) => {
+		res.json({
+			"FortPlaylistAthena": {
+				"meta": {
+					"promotion": 0
+				},
+				"assets": {}
+			}
+		})
 	});
+	
+	
     //external auth
     app.get('/account/api/public/account/:accountId/externalAuths', (req, res) => {
         res.json([])
 	});
-  
+	
+
   
     //waiting room returns with not content
     app.get('/waitingroom/api/waitingroom', (req, res) => {
@@ -118,14 +135,20 @@ module.exports = (app) => {
 		res.json([])
 	});
 	app.get('/fortnite/api/cloudstorage/user/:accountId/:fileName', (req, res) => {
-		res.set('Content-Type', 'application/octet-stream').send("")
+		res.status(204).send();
 	});
 	app.put('/fortnite/api/cloudstorage/user/:accountId/:fileName', (req, res) => {
 		res.status(204).end();
     });
 
 	//keychain
-	app.get('/fortnite/api/storefront/v2/keychain', (req, res) => { res.json(["A93064DA8BDA456CADD2CD316BE64EE5:nziBPQTfuEl4IRK6pOaovQpqQC6nsMQZFTx+DEg62q4=:EID_BLANK"]); });
+	app.get('/fortnite/api/storefront/v2/keychain', (req, res) => { 
+		
+		axios.get("https://api.nitestats.com/v1/epic/keychain", {timeout: 3000}).then(response => {
+			res.json(response.data);
+		}).catch(e => {
+			res.json(["74AF07F9A2908BB2C32C9B07BC998560:V0Oqo/JGdPq3K1fX3JQRzwjCQMK7bV4QoyqQQFsIf0k=:Glider_ID_158_Hairy"])
+		}) });
 
     //party
     app.get('/party/api/v1/Fortnite/user/:accountId', (req, res) => {
