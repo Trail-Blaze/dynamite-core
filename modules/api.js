@@ -141,4 +141,12 @@ module.exports = (app) => {
 	app.get("/fortnite/api/matchmaking/session/findPlayer/:id", (req, res) => {
 		res.json([])
 	})
+	
+	//token
+	app.get("fortnite/api/statsv2/account/:accountId", (req, res) => {
+		//todo
+		res.json([])
+	})
 }
+
+
