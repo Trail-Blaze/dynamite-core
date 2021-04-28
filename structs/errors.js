@@ -135,7 +135,7 @@ module.exports = {
           ),
           operation_forbidden: new ErrDef(
             "errors.com.epicgames.modules.profiles.operation_forbidden",
-            "Unable to find template configuration for profile {0}",
+            "Unable to find template configuration to create a new profile",
             12813,
             403
           ),
