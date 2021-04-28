@@ -45,7 +45,7 @@ module.exports = (app) => {
     }
 
     // Invalid User
-    else userName = "BlazeTest User";
+    else userName = "BlazeUser";
     res.json({
       access_token: crypto.randomBytes(15).toString("hex"),
       expires_in: 1000000000,
