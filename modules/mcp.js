@@ -1,5 +1,5 @@
 const Profile = require("../lib/profile");
-const errors = require("../structs/errors");
+const errors = require("../lib/errors");
 const { ApiException } = errors;
 const fs = require("fs");
 const { v4: uuidv4 } = require("uuid");
