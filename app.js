@@ -233,7 +233,7 @@ async function init() {
 
           // NEONITE STARTS
 
-          app.use((next) => {
+          app.use((next() => {
             next(new ApiException(errors.com.epicgames.common.not_found));
           });
 
