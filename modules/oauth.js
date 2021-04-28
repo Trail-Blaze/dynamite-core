@@ -56,7 +56,7 @@ module.exports = (app) => {
       internal_client: true,
       displayName: userName,
       app: "fortnite",
-      in_app_id: userName + "BlazeUser", //amazing id
+      in_app_id: userName, //amazing id
       device_id: "5dcab5dbe86a7344b061ba57cdb33c4f",
     });
   });
