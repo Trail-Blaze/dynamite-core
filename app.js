@@ -26,6 +26,8 @@ VERSION LOG:
 1.31.8 - REROUTE PATHS TO LIBS IN A MINIFIED WAY
 1.32.8 - ADDED ALL CORE MODULES
 1.32.9 - FIXED THEME BUG
+1.32.10 - ADDED INSTALL SCRIPT [ GRAYBTW ]
+1.34.10 - REROUTED PATHS AND FIXED BACKEND [ ZINX ]
 */
 
 const express = require("express"); // Used to activate the NodeJs express application libraries
