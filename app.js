@@ -244,7 +244,7 @@ async function init() {
           // NEONITE STARTS
           
           app.use((req, res, next) => {
-            next(new ApiException(errors.com.epicgames.common.not_found));
+            next(new ApiException(errors.com.dynamite.common.not_found));
           })
 
           app.use((err, req, res) => {
@@ -256,7 +256,7 @@ async function init() {
               const trackingId =
                 req.headers["x-epic-correlation-id"] || uuidv4();
               error = new ApiException(
-                errors.com.epicgames.common.server_error
+                errors.com.dynamite.common.server_error
               ).with(trackingId);
               console.error(trackingId, err);
             }
