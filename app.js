@@ -24,6 +24,8 @@ WHEN RELEASING A VERSION PLEASE ADD VERSION, DESCRIPTION AND CREDITS USING THE F
 
 VERSION - DESCRIPTION [ CREDITS ]
 
+ALSO MAKE SURE TO UPDATE THE VERSION VARIABLE!!!
+
 ---------------------------------------------------------------------------------------------
 
 1.0.0 - INITIAL RELEASE [ ALEXDEV404 ]
@@ -37,6 +39,7 @@ VERSION - DESCRIPTION [ CREDITS ]
 1.32.10 - ADDED INSTALL SCRIPT [ GRAYBTW ]
 1.34.10 - REROUTED PATHS AND FIXED BACKEND [ ZINX ]
 1.40.0 - STABLE RELEASE [ ZINX, VINZY, GRAYBTW, ALEXDEV404 ]
+1.40.1 - IMPROVED ERROR HANDLING [ ALEXDEV404 ]
 
 */
 
@@ -55,7 +58,7 @@ const path = require("path"); // Used for file extension filter
 // Definitions
 
 const REQ_LOGGING = true; // Request Logging is set to false by default
-const version = "1.40.0";
+const version = "1.40.1";
 const cyear = 2021;
 const authors = "Immanuel Garcia, Luke Harris, Sydney";
 const windowTitle = "Blaze Server";
