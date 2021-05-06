@@ -242,10 +242,10 @@ async function init() {
           })*/
 
           // NEONITE STARTS
-
-           app.use((next = () => {
+          
+          app.use((req, res, next) => {
             next(new ApiException(errors.com.epicgames.common.not_found));
-          }));
+          })
 
           app.use((err, req, res) => {
             let error = null;
