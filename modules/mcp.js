@@ -18,7 +18,7 @@ module.exports = (app) => {
           profileData = Profile.readProfileTemplate(profileId);
           if (!profileData) {
             throw new ApiException(
-              errors.com.epicgames.modules.profiles.operation_forbidden
+              errors.com.dynamite.modules.profiles.operation_forbidden
             ).with(profileId);
           }
           profileData.created = profileData.updated = new Date().toISOString();
@@ -92,7 +92,7 @@ module.exports = (app) => {
           }
           if (catalogEntryToPurchase == null) {
             throw new ApiException(
-              errors.com.epicgames.modules.gamesubcatalog.catalog_out_of_date
+              errors.com.dynamite.modules.gamesubcatalog.catalog_out_of_date
             ).with(req.body.offerId);
           }
           let grantToProfileId = "athena";
@@ -424,7 +424,7 @@ module.exports = (app) => {
           break;
         default:
           throw new ApiException(
-            errors.com.epicgames.fortnite.operation_not_found
+            errors.com.dynamite.fortnite.operation_not_found
           ).with(req.params.command);
       }
       if (profileChanges.length > 0) {
@@ -448,7 +448,7 @@ module.exports = (app) => {
 };
 function notfound() {
   throw next(
-    new ApiException(errors.com.epicgames.fortnite.item_not_found).withMessage(
+    new ApiException(errors.com.dynamite.fortnite.item_not_found).withMessage(
       "Locker item {0} not found!",
       req.body.lockerItem
     )
@@ -464,7 +464,7 @@ function checkValidProfileID0(
     if (validProfileIds.indexOf(sentProfileId) == -1) {
       throw next(
         new ApiException(
-          errors.com.epicgames.modules.profiles.invalid_command
+          errors.com.dynamite.modules.profiles.invalid_command
         ).with(command, `player:profile_${sentProfileId}`, sentProfileId)
       );
     } else {
