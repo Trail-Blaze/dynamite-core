@@ -4,6 +4,10 @@ const crypto = require("crypto");
 const fs = require("fs");
 
 module.exports = (app) => {
+  
+  app.get("/favicon.ico", (req, res) => {
+    res.sendFile(path.join(__dirname, "../lib/favicon.ico"))
+  });
   //check server status
   app.get("/lightswitch/api/service/bulk/status", (req, res) => {
     res.json([
