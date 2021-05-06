@@ -103,7 +103,7 @@ module.exports = (app) => {
     res.json([
       {
         id: req.query.accountId,
-        displayName: req.query.accountId.replace(/_/g, " "),
+        displayName: req.query.accountId,
         externalAuths: {},
       },
     ]);
