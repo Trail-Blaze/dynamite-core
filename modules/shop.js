@@ -8,6 +8,5 @@ module.exports = (app) => {
       .catch((e) => {
         res.json(require("../lib/shop.json"));
       });
-  });	
 	});
 }
