@@ -63,7 +63,7 @@ module.exports = (app) => {
   //verification
   app.get("/account/api/oauth/verify", (req, res) => {
     res.json({
-      access_token: req.headers.authorization.replace("bearer ", ""),
+      access_token: req.headers.authorization,
       expires_in: 28800,
       expires_at: "9999-12-31T23:59:59.999Z",
       token_type: "bearer",
