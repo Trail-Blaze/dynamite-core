@@ -263,7 +263,9 @@ async function init() {
 
             error.apply(res);
           });
+          
           // Neonite ENDS
+          
           await sleep(2000);
 
           console.clear();
