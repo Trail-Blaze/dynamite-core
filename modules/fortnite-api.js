@@ -116,7 +116,7 @@ module.exports = (app) => {
   });
 
   //token
-  app.get("fortnite/api/statsv2/account/:accountId", (req, res) => {
+  app.get("/fortnite/api/statsv2/account/:accountId", (req, res) => {
     //todo
     res.json([]);
   });
