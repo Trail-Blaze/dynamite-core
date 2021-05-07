@@ -1,4 +1,4 @@
-
+module.exports = (app) => {
   //external auth
   app.get(
     "/account/api/public/account/:accountId/externalAuths",
@@ -6,3 +6,4 @@
       res.json([]);
     }
   );
+};
