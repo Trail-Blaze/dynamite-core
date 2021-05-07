@@ -4,47 +4,6 @@ const crypto = require("crypto");
 const fs = require("fs");
 
 module.exports = (app) => {
-  
-  //version check
-  app.get("/fortnite/api/v2/versioncheck/:version", (req, res) => {
-    res.json({ type: "NO_UPDATE" });
-  });
-
-  //privacy
-  app.get("/fortnite/api/game/v2/privacy/account/:accountId", (req, res) => {
-    res.json({
-      accountId: req.params.accountId,
-      optOutOfPublicLeaderboards: false,
-    });
-  });
-
-  //enabled features
-  app.get("/fortnite/api/game/v2/enabled_features", (req, res) => {
-    res.json([]);
-  });
-
-  //grant access
-  app.post("/fortnite/api/game/v2/grant_access/:accountId", (req, res) => {
-    res.status(204).end();
-  });
-
-  //receipt for Epic Games purchase
-  app.get(
-    "/fortnite/api/receipts/v1/account/:accountId/receipts",
-    (req, res) => {
-      res.json([]);
-    }
-  );
-
-  //platform
-  app.post(
-    "/fortnite/api/game/v2/tryPlayOnPlatform/account/:accountId",
-    (req, res) => {
-      res.set("Content-Type", "text/plain");
-      res.send(true);
-    }
-  );
-
 
   //STUFF I STOLE FROM NEONITE
 
@@ -147,6 +106,67 @@ module.exports = (app) => {
 
   //END
 
+
+  //find player by ID
+  app.get("/fortnite/api/matchmaking/session/findPlayer/:id", (req, res) => {
+    res.json([]);
+  });
+
+  //token
+  app.get("fortnite/api/statsv2/account/:accountId", (req, res) => {
+    //todo
+    res.json([]);
+  });
+  
+   ////////////////////////////////////////////////////////////////////////////// 
+  
+  
+  //receipt for Epic Games purchase
+  app.get(
+    "/fortnite/api/receipts/v1/account/:accountId/receipts",
+    (req, res) => {
+      res.json([]);
+    }
+  );
+  
+  
+  //version check
+  app.get("/fortnite/api/v2/versioncheck/:version", (req, res) => {
+    res.json({ type: "NO_UPDATE" });
+  });
+  
+  
+
+  //platform
+  app.post(
+    "/fortnite/api/game/v2/tryPlayOnPlatform/account/:accountId",
+    (req, res) => {
+      res.set("Content-Type", "text/plain");
+      res.send(true);
+    }
+  );
+
+
+
+  //privacy
+  app.get("/fortnite/api/game/v2/privacy/account/:accountId", (req, res) => {
+    res.json({
+      accountId: req.params.accountId,
+      optOutOfPublicLeaderboards: false,
+    });
+  });
+
+  //enabled features
+  app.get("/fortnite/api/game/v2/enabled_features", (req, res) => {
+    res.json([]);
+  });
+
+  //grant access
+  app.post("/fortnite/api/game/v2/grant_access/:accountId", (req, res) => {
+    res.status(204).end();
+  });
+  
+  
   //keychain
   app.get("/fortnite/api/storefront/v2/keychain", (req, res) => {
     axios
@@ -161,14 +181,4 @@ module.exports = (app) => {
       });
   });
 
-  //find player by ID
-  app.get("/fortnite/api/matchmaking/session/findPlayer/:id", (req, res) => {
-    res.json([]);
-  });
-
-  //token
-  app.get("fortnite/api/statsv2/account/:accountId", (req, res) => {
-    //todo
-    res.json([]);
-  });
 };
