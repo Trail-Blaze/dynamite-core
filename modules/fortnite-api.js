@@ -5,12 +5,6 @@ const fs = require("fs");
 
 module.exports = (app) => {
   
-  //Send Favicon icon file if requested
-  
-  app.get("/favicon.ico", (req, res) => {
-    res.sendFile(path.join(__dirname, "../lib/favicon.ico"))
-  });
-  
   //version check
   app.get("/fortnite/api/v2/versioncheck/:version", (req, res) => {
     res.json({ type: "NO_UPDATE" });
