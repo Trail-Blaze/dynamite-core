@@ -91,12 +91,14 @@ module.exports = (app) => {
   app.get("/fortnite/api/cloudstorage/user/:accountId", (req, res) => {
     res.json([]);
   });
+  
   app.get(
     "/fortnite/api/cloudstorage/user/:accountId/:fileName",
     (req, res) => {
       res.status(204).send();
     }
   );
+  
   app.put(
     "/fortnite/api/cloudstorage/user/:accountId/:fileName",
     (req, res) => {
@@ -105,7 +107,8 @@ module.exports = (app) => {
   );
 
   //END
-
+  
+  
 
   //find player by ID
   app.get("/fortnite/api/matchmaking/session/findPlayer/:id", (req, res) => {
@@ -117,10 +120,7 @@ module.exports = (app) => {
     //todo
     res.json([]);
   });
-  
-   ////////////////////////////////////////////////////////////////////////////// 
-  
-  
+    
   //receipt for Epic Games purchase
   app.get(
     "/fortnite/api/receipts/v1/account/:accountId/receipts",
@@ -128,15 +128,12 @@ module.exports = (app) => {
       res.json([]);
     }
   );
-  
-  
+    
   //version check
   app.get("/fortnite/api/v2/versioncheck/:version", (req, res) => {
     res.json({ type: "NO_UPDATE" });
   });
   
-  
-
   //platform
   app.post(
     "/fortnite/api/game/v2/tryPlayOnPlatform/account/:accountId",
@@ -145,8 +142,6 @@ module.exports = (app) => {
       res.send(true);
     }
   );
-
-
 
   //privacy
   app.get("/fortnite/api/game/v2/privacy/account/:accountId", (req, res) => {
@@ -165,8 +160,7 @@ module.exports = (app) => {
   app.post("/fortnite/api/game/v2/grant_access/:accountId", (req, res) => {
     res.status(204).end();
   });
-  
-  
+    
   //keychain
   app.get("/fortnite/api/storefront/v2/keychain", (req, res) => {
     axios
