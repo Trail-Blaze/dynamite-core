@@ -1,4 +1,4 @@
-
+module.exports = (app) => {
   app.post("/api/v1/assets/Fortnite/:version/:netcl", (req, res) => {
     res.json({
       FortPlaylistAthena: {
@@ -9,4 +9,4 @@
       },
     });
   });
-
+};
