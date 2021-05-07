@@ -1,4 +1,5 @@
-  //party
+module.exports = (app) => {
+//party
   app.get("/party/api/v1/Fortnite/user/:accountId", (req, res) => {
     res.json({
       current: [],
@@ -14,3 +15,4 @@
       res.status(204).end();
     }
   );
+};
