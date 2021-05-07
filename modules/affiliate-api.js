@@ -1,4 +1,6 @@
-  //affiliate api
+module.exports = (app) => {
+  
+//affiliate api
   app.get(
     "/affiliate/api/public/affiliates/slug/:affiliateName",
     (req, res) => {
@@ -11,3 +13,4 @@
       });
     }
   );
+};
