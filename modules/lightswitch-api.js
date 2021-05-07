@@ -1,4 +1,6 @@
-  //check server status
+module.exports = (app) => {
+  
+//check server status
   app.get("/lightswitch/api/service/bulk/status", (req, res) => {
     res.json([
       {
@@ -11,3 +13,4 @@
       },
     ]);
   });
+}
