@@ -1,4 +1,4 @@
-
+module.exports = (app) => {
   //blocked people list
   app.get("/friends/api/public/blocklist/:accountId", (req, res) => {
     res.json({
@@ -25,3 +25,4 @@
   app.get("/friends/api/public/friends/:accountId", (req, res) => {
     res.json([]);
   });
+};
