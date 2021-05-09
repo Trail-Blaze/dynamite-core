@@ -24,7 +24,6 @@ GET
 /friends/api/public/friends/:accountId
 /lightswitch/api/service/bulk/status
 /account/api/oauth/exchange
-/account/api/oauth/token
 /account/api/public/account/:accountId
 /account/api/public/account/
 /account/api/public/account/:accountId/deviceAuth
@@ -50,6 +49,7 @@ POST
 /fortnite/api/game/v2/profile/:accountId/client/:command
 /account/api/public/account/:accountId/deviceAuth
 /api/v1/assets/Fortnite/:version/:netcl
+/account/api/oauth/token
 
 
 PUT
