@@ -1,3 +1,5 @@
+const path = require("path");
+
 module.exports = (app) => {
   //Send Favicon icon file if requested
   app.get("/favicon.ico", (req, res) => {    
