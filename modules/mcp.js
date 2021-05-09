@@ -447,12 +447,10 @@ module.exports = (app) => {
   );
 };
 function notfound() {
-  throw next(
-    new ApiException(errors.com.dynamite.fortnite.item_not_found).withMessage(
+  throw new ApiException(errors.com.dynamite.fortnite.item_not_found).withMessage(
       "Locker item {0} not found!",
       req.body.lockerItem
     )
-  );
 }
 function checkValidProfileID0(
   command,
@@ -462,11 +460,9 @@ function checkValidProfileID0(
 ) {
   if (command && sentProfileId) {
     if (validProfileIds.indexOf(sentProfileId) == -1) {
-      throw next(
-        new ApiException(
+      throw new ApiException(
           errors.com.dynamite.modules.profiles.invalid_command
         ).with(command, `player:profile_${sentProfileId}`, sentProfileId)
-      );
     } else {
       return true;
     }
