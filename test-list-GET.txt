@@ -22,7 +22,6 @@ http://localhost:5595/friends/api/public/list/fortnite/:accountId/recentPlayers
 http://localhost:5595/friends/api/public/friends/:accountId
 http://localhost:5595/lightswitch/api/service/bulk/status
 http://localhost:5595/account/api/oauth/exchange
-http://localhost:5595/account/api/oauth/token
 http://localhost:5595/account/api/public/account/:accountId
 http://localhost:5595/account/api/public/account/
 http://localhost:5595/account/api/public/account/:accountId/deviceAuth
