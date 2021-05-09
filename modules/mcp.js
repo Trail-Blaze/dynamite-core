@@ -31,6 +31,7 @@ module.exports = (app) => {
             );
             fs.mkdirSync(`./home/${accountId}/profile`, { recursive: true });
             Profile.saveProfile(accountId, profileId, profileData);
+            console.log("Success. No error returned.");
           } catch (e) {
             console.log("Failed creating profile!");
             throw e;
