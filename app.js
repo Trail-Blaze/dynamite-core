@@ -141,7 +141,7 @@ async function init() {
   // https://github.com/sindresorhus/get-port/
   // https://www.npmjs.com/package/get-port
 
-  const port = await getPort({ port: [5595, 80, 8080] }); // Dynamically fetches a random getPort
+  const port = process.env.app_port || await getPort({ port: [5595, 80, 8080] }); // Dynamically fetches a random getPort
   app.listen(port, () => {
     console.clear();
     exec(`title ${windowTitle} is listening on localhost port ${port}`); // Switch title to Blaze Server is listening on port {port}.
