@@ -103,7 +103,7 @@ if (REQ_LOGGING) {
 
   app.use((req, res, next) => {
     // res (response variable) is never used in this scope
-    console.log(`${bcolor.OKGREEN}[GET]${bcolor.END}`, req.url); // Logs the response URL to the console
+    console.log(`${bcolor.OKGREEN}[${req.method}]${bcolor.END}`, req.url); // Logs the response URL to the console
     next();
   });
 }
