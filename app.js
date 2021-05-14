@@ -41,6 +41,8 @@ ALSO MAKE SURE TO UPDATE THE VERSION VARIABLE!!!
 1.40.0 - STABLE RELEASE [ ZINX, VINZY, GRAYBTW, ALEXDEV404 ]
 1.40.1 - IMPROVED ERROR HANDLING [ ALEXDEV404 ]
 1.40.2 - SORTED MODULES AND SPREADED API.JS OUT INTO SEPARATE FILES [ ALEXDEV404 ]
+1.40.3 - MADE SERVER "ACTUALLY" PRINT OUT REQUEST METHOD INSTEAD OF PRINTING OUT PRE-TYPED GARBAGE [ ALEXDEV404 ]
+
 
 */
 
@@ -59,7 +61,7 @@ const path = require("path"); // Used for file extension filter
 // Definitions
 
 const REQ_LOGGING = true; // Request Logging is set to false by default
-const version = "1.40.1";
+const version = "1.40.3";
 const cyear = 2021;
 const authors = "Immanuel Garcia, Luke Harris, Sydney";
 const windowTitle = "Blaze Server";
