@@ -1,7 +1,7 @@
 /*
 App.js - This script creates a static server, hosts files from the "public" directory and
 finds and empty port to listen on
-Copyright (C) 2021  Immanuel Garcia, Luke Harris, Sydney
+Copyright (C) 2021  Immanuel Garcia, Luke Harris, Kai
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 2 of the License, or
@@ -63,7 +63,7 @@ const path = require("path"); // Used for file extension filter
 const REQ_LOGGING = true; // Request Logging is set to false by default
 const version = "1.40.3";
 const cyear = 2021;
-const authors = "Immanuel Garcia, Luke Harris, Sydney";
+const authors = "Immanuel Garcia, Luke Harris, Kai";
 const windowTitle = "Blaze Server";
 
 // Imported and converted from a Python Project
