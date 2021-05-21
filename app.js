@@ -46,6 +46,8 @@ ALSO MAKE SURE TO UPDATE THE VERSION VARIABLE!!!
 
 */
 
+// TODO: ADD TIMER TO MODULE IMPORT LIST ALONG WITH A COUNTER THAT COUNTS THE AMOUNT OF MODULES IMPORTED
+
 const express = require("express"); // Used to activate the NodeJs express application libraries
 const getPort = require("get-port"); // Used to listen for an empty random port
 const fs = require("fs"); // Used to access the immediate filesystem of an application.
