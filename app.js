@@ -1,7 +1,7 @@
 /*
 App.js - This script creates a static server, hosts files from the "public" directory and
 finds and empty port to listen on
-Copyright (C) 2021  Immanuel Garcia, Luke Harris, Kai
+Copyright (C) 2021  Immanuel Garcia, Luke Harris, Kai, Grayson Stowell
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 2 of the License, or
