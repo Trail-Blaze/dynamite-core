@@ -31,6 +31,7 @@ module.exports = (app) => {
   app.post("/account/api/oauth/token", (req, res) => {
     userName = "";
     accId = "";
+    displayName = "";
     if (req.body.username) userName = req.body.username.split("@")[0];
     else if (req.body.email) userName = req.body.email.split("@")[0];
     else displayName = `InvalidUser${Math.random().toString().substring(15)}`;
