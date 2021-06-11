@@ -43,6 +43,7 @@ ALSO MAKE SURE TO UPDATE THE VERSION VARIABLE!!!
 1.40.2 - SORTED MODULES AND SPREADED API.JS OUT INTO SEPARATE FILES [ ALEXDEV404 ]
 1.40.3 - MADE SERVER "ACTUALLY" PRINT OUT REQUEST METHOD INSTEAD OF PRINTING OUT PRE-TYPED GARBAGE [ ALEXDEV404 ]
 1.40.3 - ADD GRAYSON STOWELL TO THE AUTHORS VARIABLE [ ALEXDEV404 ]
+1.41.3 - ADDED ASCII LOGO TO APPLICATION
 
 */
 
@@ -67,6 +68,7 @@ const version = "1.40.3";
 const cyear = 2021;
 const authors = "Immanuel Garcia, Luke Harris, Kai, Grayson Stowell";
 const windowTitle = "Blaze Server";
+const b_logo = "                                                    \n88888888ba   88                                     \n88      \"8b  88                                     \n88      ,8P  88                                     \n88aaaaaa8P\'  88  ,adPPYYba,  888888888   ,adPPYba,  \n88\"\"\"\"\"\"8b,  88  \"\"     `Y8       a8P\"  a8P_____88  \n88      `8b  88  ,adPPPPP88    ,d8P\'    8PP\"\"\"\"\"\"\"  \n88      a8P  88  88,    ,88  ,d8\"       \"8b,   ,aa  \n88888888P\"   88  `\"8bbdP\"Y8  888888888   `\"Ybbd8\"\'  \n                                                    \n                                                    "; // ASCII Logo
 
 // Imported and converted from a Python Project
 
@@ -278,7 +280,7 @@ async function init() {
 
           console.clear();
           console.log("\n");
-          console.log(`< Theoretical Ascii logo goes here >`);
+          console.log(`${bcolor.OKCYAN}${bcolor.BOLD}${b_logo}${bcolor.END}`);
           console.log("\n");
           console.log(
             `${bcolor.OKGREEN}Blaze version ${version}, Copyright (C) ${cyear} ${authors}\nBlaze comes with ABSOLUTELY NO WARRANTY.\n\nThis is free software, and you are welcome to redistribute it under certain conditions.\nFor more information, please refer to the bundled LICENSE file.${bcolor.END}`
