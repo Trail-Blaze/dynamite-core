@@ -9,7 +9,9 @@ Trailblaze Backend, the core of Blaze.
 <img alt="Stars" src="https://img.shields.io/github/stars/trail-blaze/dyna-core-beta?style=for-the-badge&color=yellow&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAXCAYAAAFmJr+7AAACpUlEQVRIx62UvWsUURTFf3d2NivKzsomNilMYRox2rxGRME0imJhxE8U7AUFFQsRbGxEJba2NjEgWoj6L6TZB0nQkDJR0UKi2SEgcWbftdiZzezu7CaiF4aZefe8+3HueU9UldR8tcFB4BngRFVRGzTdqoqrlferKp7a4B4wrza4m3o0juMmLH1crayqShRFpMEmgZutfBT8LPpJ8naq2tyRZx7A+vo6aoNlZsdwzgEgrlY+D5wEribgF8B0eyeJiQnFS75/tFZNXVo5gKqYUMAbwFaWgfyq1FZ2gP4UEw7kVptWnNmyBhTVBm8BGo3GRl1JsUvACJvbaFtJaoM7wKNOVLOPjpKStFnwVCbQxEbUjRkdc7UhyU4547udftMDcCBvXVU3Supgwzap7SECoCkuEZgdA/BBFwDiOKZN2inY931EBG18epP4dudlEFcrn0hmMArsAU5n/F+BRWAe+AgsiKuVR4ClLQztm5hw2BMTLkPJ2wQ8JSYc7hJfp54TeyAmvN/FUhzHvaJfi6Kom9bCXPVMniyAQd/3uzcATwEH3oCY8HIiuEmgOZ8cLd3KlYndJa5WPp7+97wH8kxtMA2omPDSVvf0pD+KoraTqTa4DlwALqoNbnTi4zjOJbqrgziOcc5RLBZb3CQ370zH3kNiwhlVbV1yqorneXiel5+g0WjgeV4b6WorZdDVnG4dSBWzWhekyXd2WJmzcBR4B2zn/9ov4FSrA7WVbaDvgfF/DFwDGRdTX+tzbwdXgOf9RJBjd8XUH4L0H3ImyWtgYovBX4kJz6ZzLBQK/VVUmBusgq78JTVDv8e+rxSLxTYV9aBAJzsWvgBHxISSHPHDwOcOzONSqdQWPLcDtZVKIssPwDkx4eImp3sv8BLYB7JTTL2e9f8B1jOzekMmlTMAAAAASUVORK5CYII=" />
 <p />
 
-![Screenshot 2021-05-10 145346](https://user-images.githubusercontent.com/34188635/117723405-93a65500-b19f-11eb-8ac2-02061bb79e3e.png)
+<!-- ![Screenshot 2021-05-10 145346](https://user-images.githubusercontent.com/34188635/117723405-93a65500-b19f-11eb-8ac2-02061bb79e3e.png) -->
+![image](https://user-images.githubusercontent.com/34188635/121742774-8b527a00-cabd-11eb-8739-405db566fa45.png)
+
 
 ## To Run
 ### On First Run:
