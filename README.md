@@ -18,3 +18,6 @@ Trailblaze Backend, the core of Blaze.
 ### On First Run:
 - Do the usual `npm install` to install all the necessary libraries needed in order to run the program
 - Use `npm start`, `launch.bat`, or `node app.js` in order to run the script
+### To Build:
+- `npm install pkg -g`
+- `pkg app.js --assets "public/**/*" --scripts "modules/**/*.js" `
