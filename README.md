@@ -22,3 +22,8 @@ Trailblaze Backend, the core of Blaze.
 ## To Build [ WIP Might Not Work ]:
 - `npm install -g pkg`
 - `pkg app.js --assets "public/**/*" --scripts "modules/**/*.js", "lib/**/*.js"`
+
+# ❤️ Like, ⭐ Star, 🍴 Fork!
+
+Feel free to edit, tinker or rebrand as you like or use in any of your projects! Be inspired! We love seeing new people putting their own spin on our backend!
+
