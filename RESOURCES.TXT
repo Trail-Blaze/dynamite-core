@@ -1,0 +1,7 @@
+# MARADNS
+https://maradns.samiam.org/
+https://github.com/samboy/MaraDNS/
+
+# TINYWEB
+https://www.ritlabs.com/en/products/tinyweb/
+https://www.ritlabs.com/en/products/tinyweb/tinyssl.php
