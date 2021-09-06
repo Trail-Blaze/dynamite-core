@@ -68,9 +68,16 @@ const version = "1.41.3";
 const cyear = 2021;
 const authors = "Immanuel Garcia, Luke Harris, Kai, Grayson Stowell";
 const windowTitle = "Blaze Server";
-const b_logo = "                                                    \n88888888ba   88                                     \n88      \"8b  88                                     \n88      ,8P  88                                     \n88aaaaaa8P\'  88  ,adPPYYba,  888888888   ,adPPYba,  \n88\"\"\"\"\"\"8b,  88  \"\"     `Y8       a8P\"  a8P_____88  \n88      `8b  88  ,adPPPPP88    ,d8P\'    8PP\"\"\"\"\"\"\"  \n88      a8P  88  88,    ,88  ,d8\"       \"8b,   ,aa  \n88888888P\"   88  `\"8bbdP\"Y8  888888888   `\"Ybbd8\"\'  \n                                                    \n                                                    "; // ASCII Logo
+const b_logo =
+  '                                                    \n88888888ba   88                                     \n88      "8b  88                                     \n88      ,8P  88                                     \n88aaaaaa8P\'  88  ,adPPYYba,  888888888   ,adPPYba,  \n88""""""8b,  88  ""     `Y8       a8P"  a8P_____88  \n88      `8b  88  ,adPPPPP88    ,d8P\'    8PP"""""""  \n88      a8P  88  88,    ,88  ,d8"       "8b,   ,aa  \n88888888P"   88  `"8bbdP"Y8  888888888   `"Ybbd8"\'  \n                                                    \n                                                    '; // ASCII Logo
+const baseDir = __dirname;
+const useSecureHTTPS = true;
 
 // Imported and converted from a Python Project
+
+const port = {
+  // "port": NUMBER
+};
 
 const bcolor = {
   HEADER: "\033[95m",
@@ -147,17 +154,32 @@ async function init() {
   // https://github.com/sindresorhus/get-port/
   // https://www.npmjs.com/package/get-port
 
-  const port = process.env.app_port || await getPort({ port: [5595, 80, 8080] }); // Dynamically fetches a random getPort
-  app.listen(port, () => {
+  // For HTTPS port 443
+
+  if (useSecureHTTPS) {
+    port.port = 5595; //443
+    process.on("uncaughtException", () =>
+      console.error(
+        `${bcolor.FAIL}[ERR_CANNOT_START]${bcolor.END}${bcolor.WARN} Dynamite cannot claim port ${port.port}! If this port is already in use, please stop any programs that might be using it and then try starting Dynamite again. If running in a Docker container such as GitHub Codespaces, note that Dynamite is not designed to run inside one of these, and as a result may cause errors such as these.${bcolor.END}\n`
+      )
+    );
+  }
+  if (!useSecureHTTPS) {
+    port.port =
+      process.env.app_port || (await getPort({ port: [5595, 80, 8080] })); // Dynamically fetches a random getPort
+  }
+
+  var portjson = JSON.stringify(port, null, 3);
+  app.listen(port.port, () => {
     console.clear();
-    exec(`title ${windowTitle} is listening on localhost port ${port}`); // Switch title to Blaze Server is listening on port {port}.
+    exec(`title ${windowTitle} is listening on localhost port ${port.port}`); // Switch title to Blaze Server is listening on port {port}.
 
     // Saves Port Number To File
     // https://www.w3schools.com/nodejs/nodejs_filesystem.asp
 
     start(); // Display Disclaimer and start Blaze
 
-    const filename_log = "port";
+    const filename_log = "port.json";
 
     // Creates File if Not Found
     // https://flaviocopes.com/how-to-check-if-file-exists-node/
@@ -192,7 +214,7 @@ async function init() {
       function createPortfile() {
         // Recreates File With Correct Port Number
 
-        fs.writeFile(`${filename_log}`, `${port}`, function (err) {
+        fs.writeFile(`${filename_log}`, portjson, "utf8", function (err) {
           if (err) throw err;
           console.log(
             `${bcolor.OKBLUE}[INFO]${bcolor.END}`,
@@ -238,12 +260,12 @@ async function init() {
           console.log("Core directory exists. Loading required files...\n");
 
           for (let range = 0; range < filesList.length; range++) {
-            require(`${runfiles}/${filesList[range]}`)(app, port);
+            require(`${runfiles}/${filesList[range]}`)(app, port.port);
             console.log(
               `${bcolor.OKCYAN}[OK] Importing: ${runfiles}/${filesList[range]}${bcolor.END}`
             );
           }
-          const theme = require("./ThemePacks/CurrentTheme.js")(app, port); // Load theme
+          const theme = require("./ThemePacks/CurrentTheme.js")(app, port.port); // Load theme
           console.log("\n");
 
           // Replaced shit code with better code.
@@ -252,10 +274,10 @@ async function init() {
           })*/
 
           // NEONITE STARTS
-          
+
           app.use((req, res, next) => {
             next(new ApiException(errors.com.dynamite.common.not_found));
-          })
+          });
 
           app.use((err, req, res) => {
             let error = null;
@@ -273,9 +295,9 @@ async function init() {
 
             error.apply(res);
           });
-          
+
           // Neonite ENDS
-          
+
           await sleep(2000);
 
           console.clear();
@@ -287,7 +309,7 @@ async function init() {
           );
           console.log("\n");
           console.log(
-            `${bcolor.HEADER}Blaze has successfully initialized and is listening on port ${port}.${bcolor.END}`
+            `${bcolor.HEADER}Blaze has successfully initialized and is listening on port ${port.port}.${bcolor.END}`
           );
           console.log(
             `${bcolor.HEADER}To exit, hit CTRL + C at any time.${bcolor.END}\n`
@@ -309,4 +331,12 @@ async function init() {
     */
   });
 }
-module.exports = app;
+
+// https://www.sitepoint.com/understanding-module-exports-exports-node-js/
+
+module.exports = {
+  bcolor: bcolor,
+  useSecureHTTPS: useSecureHTTPS,
+  baseDir: baseDir,
+  app: app
+};
