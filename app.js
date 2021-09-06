@@ -43,7 +43,8 @@ ALSO MAKE SURE TO UPDATE THE VERSION VARIABLE!!!
 1.40.2 - SORTED MODULES AND SPREADED API.JS OUT INTO SEPARATE FILES [ ALEXDEV404 ]
 1.40.3 - MADE SERVER "ACTUALLY" PRINT OUT REQUEST METHOD INSTEAD OF PRINTING OUT PRE-TYPED GARBAGE [ ALEXDEV404 ]
 1.40.3 - ADD GRAYSON STOWELL TO THE AUTHORS VARIABLE [ ALEXDEV404 ]
-1.41.3 - ADDED ASCII LOGO TO APPLICATION
+1.41.3 - ADDED ASCII LOGO TO APPLICATION [ ALEXDEV404 ]
+1.42.3 - DYNAMITE NOW SUPPORTS HTTPS! [ ALEXDEV404 ]
 
 */
 
@@ -65,7 +66,7 @@ const https = require('https'); // HTTPS Module
 // Definitions
 
 const REQ_LOGGING = true; // Request Logging is set to false by default
-const version = "1.41.3";
+const version = "1.42.3";
 const cyear = 2021;
 const authors = "Immanuel Garcia, Luke Harris, Kai, Grayson Stowell";
 const windowTitle = "Blaze Server";
@@ -169,7 +170,7 @@ async function init() {
   // For HTTPS port 443
 
   if (useSecureHTTPS) {
-    port.port = 5595; //443
+    port.port = 443; //443
     server = https.createServer(options, app); // Setup as HTTPS server if secure HTTPS is enabled
     process.on("uncaughtException", () =>
       console.error(
