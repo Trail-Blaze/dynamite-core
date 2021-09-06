@@ -1,0 +1,12 @@
+lightswitch api
+fortnite api
+version api
+account api
+waitingroom api
+friends api
+datarouter api
+prescence api
+party api
+socialban api
+content-controls api
+affiliate api

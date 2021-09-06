@@ -1,3 +1,4 @@
 {
-   "port": 5595
+   "port": 443,
+   "portHTTP": 80
 }

@@ -1,0 +1,71 @@
+{
+  "created": "",
+  "updated": "",
+  "rvn": 1,
+  "wipeNumber": 1,
+  "accountId": "",
+  "profileId": "athena",
+  "version": "neothanos",
+    "stats": {
+    "attributes": {
+      "past_seasons": [],
+      "season_match_boost": 0,
+      "favorite_victorypose": "",
+      "favorite_charms": [],
+      "mfa_reward_claimed": false,
+      "quest_manager": {
+        "dailyLoginInterval": "2019-10-27T19:38:43.692Z",
+        "dailyQuestRerolls": 1
+      },
+      "book_level": 100,
+      "season_num": 9,
+      "favorite_consumableemote": "",
+      "banner_color": "",
+      "favorite_callingcard": "",
+      "favorite_character": "",
+      "favorite_spray": [],
+      "book_xp": 17530986546,
+      "favorite_loadingscreen": "",
+      "permissions": [],
+      "season": {
+        "numWins": 1,
+        "numHighBracket": 1,
+        "numLowBracket": 1
+      },
+      "favorite_itemwraps": [],
+      "lifetime_wins": 1,
+      "book_purchased": true,
+      "party_assist_quest": "",
+      "favorite_hat": "",
+      "purchased_battle_pass_tier_offers": {},
+      "level": 6969,
+      "xp_overflow": 0,
+      "favorite_battlebus": "",
+      "favorite_mapmarker": "",
+      "rested_xp": 163200,
+      "favorite_vehicledeco": "",
+      "accountLevel": 5,
+      "competitive_identity": {},
+      "favorite_backpack": "",
+      "favorite_dance": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "inventory_limit_bonus": 0,
+      "favorite_skydivecontrail": "",
+      "favorite_pickaxe": "",
+      "favorite_glider": "",
+      "daily_rewards": {},
+      "xp": 17530,
+      "season_friend_match_boost": 0,
+      "cosmetic_locker_item_id": "",
+      "favorite_musicpack": "",
+      "banner_icon": ""
+    }
+  },
+  "commandRevision": 0
+}
