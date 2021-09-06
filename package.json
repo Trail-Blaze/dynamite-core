@@ -34,6 +34,7 @@
     "get-port": "^5.1.1",
     "https": "^1.0.0",
     "jsonwebtoken": "^8.5.1",
+    "safer-buffer": "^2.1.2",
     "uuid": "^8.3.2"
   }
 }
