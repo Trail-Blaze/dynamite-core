@@ -60,6 +60,7 @@ const { exec } = require("child_process"); // Shell execution library
 const app = express(); // Create an express application
 const runfiles = "./modules"; // All core libraries and scripts required for Blaze to run
 const path = require("path"); // Used for file extension filter
+const https = require('https'); // HTTPS Module
 
 // Definitions
 
@@ -72,11 +73,12 @@ const b_logo =
   '                                                    \n88888888ba   88                                     \n88      "8b  88                                     \n88      ,8P  88                                     \n88aaaaaa8P\'  88  ,adPPYYba,  888888888   ,adPPYba,  \n88""""""8b,  88  ""     `Y8       a8P"  a8P_____88  \n88      `8b  88  ,adPPPPP88    ,d8P\'    8PP"""""""  \n88      a8P  88  88,    ,88  ,d8"       "8b,   ,aa  \n88888888P"   88  `"8bbdP"Y8  888888888   `"Ybbd8"\'  \n                                                    \n                                                    '; // ASCII Logo
 const baseDir = __dirname;
 const useSecureHTTPS = true;
+let server;
 
 // Imported and converted from a Python Project
 
 const port = {
-  // "port": NUMBER
+  "port": null
 };
 
 const bcolor = {
@@ -90,6 +92,16 @@ const bcolor = {
   BOLD: "\033[1m",
   UNDERLINE: "\033[4m",
 };
+
+// HTTPS Configuration
+
+var key = fs.readFileSync(__dirname + '/certs/epicgames.com.key');
+var cert = fs.readFileSync(__dirname + '/certs/epicgames.com.crt');
+var options = {
+  key: key,
+  cert: cert
+};
+
 
 // A sleep function I found somewhere just in case
 
@@ -158,6 +170,7 @@ async function init() {
 
   if (useSecureHTTPS) {
     port.port = 5595; //443
+    server = https.createServer(options, app); // Setup as HTTPS server if secure HTTPS is enabled
     process.on("uncaughtException", () =>
       console.error(
         `${bcolor.FAIL}[ERR_CANNOT_START]${bcolor.END}${bcolor.WARN} Dynamite cannot claim port ${port.port}! If this port is already in use, please stop any programs that might be using it and then try starting Dynamite again. If running in a Docker container such as GitHub Codespaces, note that Dynamite is not designed to run inside one of these, and as a result may cause errors such as these.${bcolor.END}\n`
@@ -167,10 +180,11 @@ async function init() {
   if (!useSecureHTTPS) {
     port.port =
       process.env.app_port || (await getPort({ port: [5595, 80, 8080] })); // Dynamically fetches a random getPort
+      server = app // Setup as HTTP server is secure HTTPS is disabled
   }
 
   var portjson = JSON.stringify(port, null, 3);
-  app.listen(port.port, () => {
+  server.listen(port.port, () => {
     console.clear();
     exec(`title ${windowTitle} is listening on localhost port ${port.port}`); // Switch title to Blaze Server is listening on port {port}.
 
@@ -308,8 +322,10 @@ async function init() {
             `${bcolor.OKGREEN}Blaze version ${version}, Copyright (C) ${cyear} ${authors}\nBlaze comes with ABSOLUTELY NO WARRANTY.\n\nThis is free software, and you are welcome to redistribute it under certain conditions.\nFor more information, please refer to the bundled LICENSE file.${bcolor.END}`
           );
           console.log("\n");
+          let STATUS;
+          useSecureHTTPS ? STATUS = "[HTTPS]" : STATUS = "[HTTP]";
           console.log(
-            `${bcolor.HEADER}Blaze has successfully initialized and is listening on port ${port.port}.${bcolor.END}`
+            `${bcolor.HEADER}Blaze has successfully initialized and is listening on port ${port.port}. ${STATUS}${bcolor.END} `
           );
           console.log(
             `${bcolor.HEADER}To exit, hit CTRL + C at any time.${bcolor.END}\n`
