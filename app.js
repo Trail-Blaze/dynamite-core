@@ -45,6 +45,7 @@ ALSO MAKE SURE TO UPDATE THE VERSION VARIABLE!!!
 1.40.3 - ADD GRAYSON STOWELL TO THE AUTHORS VARIABLE [ ALEXDEV404 ]
 1.41.3 - ADDED ASCII LOGO TO APPLICATION [ ALEXDEV404 ]
 1.42.3 - DYNAMITE NOW SUPPORTS HTTPS! [ ALEXDEV404 ]
+1.42.4 - BETTER SSL CERT PATH [ ALEXDEV404 ]
 
 */
 
@@ -66,7 +67,7 @@ const https = require("https"); // HTTPS Module
 // Definitions
 
 const REQ_LOGGING = true; // Request Logging is set to false by default
-const version = "1.42.3";
+const version = "1.42.4";
 const cyear = 2021;
 const authors = "Immanuel Garcia, Luke Harris, Kai, Grayson Stowell";
 const windowTitle = "Blaze Server";
@@ -98,8 +99,8 @@ const bcolor = {
 
 // HTTPS Configuration
 
-var key = fs.readFileSync(__dirname + "/certs/epicgames.com.key");
-var cert = fs.readFileSync(__dirname + "/certs/epicgames.com.crt");
+var key = fs.readFileSync(__dirname + "/certs/cert.key");
+var cert = fs.readFileSync(__dirname + "/certs/cert.crt");
 var options = {
    key: key,
    cert: cert,
