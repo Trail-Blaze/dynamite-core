@@ -2,8 +2,9 @@
 
 <!-- ![Screenshot 2021-05-10 145346](https://user-images.githubusercontent.com/34188635/117723405-93a65500-b19f-11eb-8ac2-02061bb79e3e.png) -->
 <!--- ![image](https://user-images.githubusercontent.com/34188635/121742774-8b527a00-cabd-11eb-8739-405db566fa45.png) -->
-<img alt="banner" src="https://trail-blaze.github.io/res/Blaze/Dynamite-Full-Full.png"/>
+
 <div align="center">
+  <img alt="banner" src="https://trail-blaze.github.io/res/Blaze/Dynamite-Full-Full.png" width=70%/>
   <h1>Trailblaze Backend, the core of Blaze.</h1>
 
 <p style="display: inline-block">
