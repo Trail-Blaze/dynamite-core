@@ -4,7 +4,7 @@
 <!--- ![image](https://user-images.githubusercontent.com/34188635/121742774-8b527a00-cabd-11eb-8739-405db566fa45.png) -->
 
 <div align="center">
-  <img alt="banner" src="https://trail-blaze.github.io/res/Blaze/Dynamite-Full-Full.png" width=70%/>
+  <img alt="banner" src="https://trail-blaze.github.io/res/Blaze/Dynamite-Full-Full.png" width=50%/>
   <h1>Trailblaze Backend, the core of Blaze.</h1>
 
 <p style="display: inline-block">
