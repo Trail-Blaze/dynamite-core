@@ -22,7 +22,7 @@
 ### On First Run:
 - Do the usual `npm install` to install all the necessary libraries needed in order to run the program
 - Use `npm start`, `launch.bat`, or `node app.js` in order to run the script
-- <**NEW**> If you would like to run the service invisibly, run the shortcut named `StartMainServiceModule`
+- **[ NEW ]** If you would like to run the service invisibly, run the shortcut named `StartMainServiceModule`
 
 ## To Build [ WIP Might Not Work ]:
 - `npm install -g pkg`
