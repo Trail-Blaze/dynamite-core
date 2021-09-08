@@ -5,7 +5,7 @@
 
 <div align="center">
   <img alt="banner" src="https://trail-blaze.github.io/res/Blaze/Dynamite-Full-Full.png" width=50%/>
-  <h1>Trailblaze Backend, the core of Blaze.</h1>
+  <h1>The Dynamite Backend, the core of Blaze.</h1>
 
 <p style="display: inline-block">
 <img alt="info" src="https://img.shields.io/github/v/release/trail-blaze/dyna-core-beta?style=for-the-badge&color=red&include_prereleases&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAUCAYAAAHzZY3hAAACtUlEQVQ4y32TS0iUYRSGn+/7dXTQRkvzEoRXEsxLRRFB0MZFIS0KLSJHzJ2LVpGXVtpCxy4EraNCW6RFEQRBtYmiwEVoajdJndRGnbyPznj5PS1+Uwd/PLvvvO855z3fOQcAuVGRAoCcjhUtdyriCQZYNyVXTgjRO9B0vYPQvOWW9lJDqg6JRWl2d/OmNQ+AzHzsTerPiHjKjwMoAClCyDoA2QWFWs4mCAC/OmHF7NJkFGxSoUMqPFe9ZqnDJDY5SV174AfQ62BDySKjL0x+dMCU95543P2Wzqayk4wNvmJsAPwjFlsbkFUIafuXNegqvndsgACrJkz6QCTSkt1YnoAy//L1E0REQs4RQPep2pZ9W5v2uJ9ufkeEg+UvWVwo3uzb6KLZ/ZjfPcUsBZFbFxLDCFJf6sD77TxDfWCuwEzgvty9HLVRwuFMx9cPwTnwD4Mj6jQx8QuAoaShJMjkn2h6P24UzsiDpHSIS8iOYHo8HAQY7IVIB7h2tmqinDYDFmuygksTnzSMUuGEKCfszQVRbrXWfxuj/efwD0FyBiTtBW0cVNUPOxXbmDRX7kCW3wM5qrbVacfRtoGCEk/ZbebGZvH2FhIMREuz+7Add4sCaXI3Epqtwz8C5rJ1DHuywZVyCmUWoAipmta7tgmk8dJuprzjBKZh3AszExDjgswCMCLBXBGS0xVKbqqaR9Xhu9BeamCYJ5jwQd9nKxhgaRF8gzDyE0LziuHvsCpXxVPeZm28p+wJE74SAlNWgH8Ipv32v+pKgOQ0cDghNRPgegSoNFZNGOiGlWW2tdkJiI6BuEQwTTCMMo3iObtSsd0Y++FaCQwDoHttUS7mg37N1FgKPR9gcWFrXEwc5B6DuN0AAUSdUXUtb7eOsdF9FINKhCIgce1kfCBfQD8jFGxX9U+W/vP/ARC6EVMCUiKjAAAAAElFTkSuQmCC" />
