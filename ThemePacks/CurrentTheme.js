@@ -18,7 +18,7 @@ module.exports = (app) => {
                             tabTitleOverride: "Blaze",
                             _type: "CommonUI Simple Message MOTD",
                             title: "Welcome To Blaze",
-                            body: "Private Testing Build 1.31.8",
+                            body: "Private Testing Build 1.42.4",
                             videoStreamingEnabled: false,
                             sortingPriority: 20,
                             id: "blaze-splashscreen",
