@@ -17,6 +17,19 @@
   </div>
 <h1></h1>
 
+# Disclaimer
+
+### **ABSTRACT:** This software is for educational purposes only. This software should not be used for illegal activity. The author(s) is not responsible for its use.
+
+This repository is for research purposes only, the use of this code is your responsibility and **AT YOUR OWN RISK**.
+
+We take **NO** responsibility and/or liability for how you choose to use any of the source code available here. By using any of the files available in this repository, you understand that you are AGREEING TO USE AT YOUR OWN RISK. Once again, ALL files available here are for EDUCATION and/or RESEARCH purposes ONLY.
+
+We take **NO** responsibility for the abuse of Epic Games' Services, this backend, or how you volunarily choose to use **ANY** information given in the related scripts and documentation.
+
+## **WE DO NOT GRANT PERMISSIONS TO USE DYNAMITE TO BREAK THE LAW.**
+
+As Dynamite is in open-beta stage, it is likely that bugs occur. I disclaim any warranty for Dynamite it is provided "AS IS".
 
 ## To Run
 ### On First Run:
