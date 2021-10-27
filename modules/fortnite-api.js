@@ -202,4 +202,39 @@ module.exports = (app) => {
       });
   });
 
-};
+	app.post(
+   "/fortnite/api/game/v2/creative/discovery/surface/:accountId",
+   (req, res) =>
+      res.json({
+         Panels: [
+            {
+               PanelName: "Most Popular",
+               Pages: [
+                  {
+                     results: [
+                        {
+                           linkData: {
+                              mnemonic: "playlist_battlelab",
+                              linkType: "BR:Playlist",
+                              active: true,
+                              version: 93,
+                              accountId: "epic",
+                              creatorName: "Epic",
+                              descriptionTags: [],
+                              metadata: {
+                                 matchmaking: {
+                                    override_playlist: "playlist_battlelab",
+                                 },
+                              },
+                           },
+                           isFavorite: false,
+                        },
+                     ],
+                  },
+               ],
+            },
+         ],
+      })
+);
+	
+}; // END MODULE
