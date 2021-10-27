@@ -47,6 +47,23 @@ module.exports = (app) => {
     res.json([]);    
 });
   
+// Friends summary
   
+  app.get('/friends/api/v1/:accountId/summary', (req, res) => {
+		res.json({
+			"friends": [{}],
+			"incoming": [],
+			"suggested": [],
+			"blocklist": [],
+			"settings": {
+				"acceptInvites": "public"
+			},
+			"limitsReached": {
+				"incoming": false,
+				"outgoing": false,
+				"accepted": false
+			}
+		})
+	})
   
 }; // END MODULE EXPORT
