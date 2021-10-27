@@ -17,7 +17,7 @@ const axios = require("axios");
 const path = require("path");
 const crypto = require("crypto");
 const fs = require("fs");
-
+const hotfixPath = path.join(__dirname, '../lobby/');
 module.exports = (app) => {
 
   //STUFF I STOLE FROM NEONITE
