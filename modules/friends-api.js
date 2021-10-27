@@ -40,4 +40,13 @@ module.exports = (app) => {
   app.get("/friends/api/public/friends/:accountId", (req, res) => {
     res.json([]);
   });
-};
+
+
+// Recent Users
+  app.get("/friends/api/v1/*/recent/fortnite", (req, res) => {
+    res.json([]);    
+});
+  
+  
+  
+}; // END MODULE EXPORT
