@@ -26,4 +26,9 @@ module.exports = (app) => {
         res.json(require("../lib/shop.json"));
       });
 	});
-}
+	
+	app.get("/catalog/api/shared/bulk/offers", function (req, res) { 
+		res.json({}) 
+	})
+	
+} // END MODULE EXPORTS
