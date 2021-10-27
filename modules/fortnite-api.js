@@ -202,7 +202,7 @@ module.exports = (app) => {
       });
   });
 
-	app.post(
+app.post(
    "/fortnite/api/game/v2/creative/discovery/surface/:accountId",
    (req, res) =>
       res.json({
@@ -236,5 +236,432 @@ module.exports = (app) => {
          ],
       })
 );
+
+app.get("/fortnite/api/game/v2/creative/favorites/:accountId", (req, res) =>
+   res.json({
+      results: [],
+      hasMore: false,
+   })
+);
+
+app.get("/fortnite/api/game/v2/creative/history/:accountId", (req, res) =>
+   res.json({
+      results: [],
+      hasMore: false,
+   })
+);
+
+app.get("/links/api/fn/mnemonic/:playlist", (req, res) =>
+   res.json({
+      namespace: "fn",
+      accountId: "epic",
+      creatorName: "Epic",
+      mnemonic: req.params.playlist,
+      linkType: "BR:Playlist",
+      metadata: {
+         matchmaking: {
+            override_playlist: req.params.playlist,
+         },
+      },
+      version: 93,
+      active: true,
+      disabled: false,
+      created: "2021-08-16T16:43:18.268Z",
+      published: "2021-08-03T15:27:17.540Z",
+      descriptionTags: [],
+   })
+);
+app.post(
+   "/fortnite/api/game/v2/creative/discovery/surface/:accountId",
+   (req, res) =>
+      res.json({
+         Panels: [
+            {
+               PanelName: "Most Popular",
+               Pages: [
+                  {
+                     results: [
+                        {
+                           linkData: {
+                              mnemonic: "playlist_battlelab",
+                              linkType: "BR:Playlist",
+                              active: true,
+                              version: 93,
+                              accountId: "epic",
+                              creatorName: "Epic",
+                              descriptionTags: [],
+                              metadata: {
+                                 matchmaking: {
+                                    override_playlist: "playlist_battlelab",
+                                 },
+                              },
+                           },
+                           isFavorite: false,
+                        },
+                        {
+                           linkData: {
+                              mnemonic: "playlist_defaultsolo",
+                              linkType: "BR:Playlist",
+                              active: true,
+                              version: 93,
+                              accountId: "epic",
+                              creatorName: "Epic",
+                              descriptionTags: [],
+                              metadata: {
+                                 matchmaking: {
+                                    override_playlist: "playlist_defaultsolo",
+                                 },
+                              },
+                           },
+                           isFavorite: false,
+                        },
+                        {
+                           linkData: {
+                              mnemonic: "playlist_papaya",
+                              linkType: "BR:Playlist",
+                              active: true,
+                              version: 93,
+                              accountId: "epic",
+                              creatorName: "Epic",
+                              descriptionTags: [],
+                              metadata: {
+                                 matchmaking: {
+                                    override_playlist: "playlist_papaya",
+                                 },
+                              },
+                           },
+                           isFavorite: false,
+                        },
+                        {
+                           linkData: {
+                              mnemonic: "playlist_respawn_24_alt",
+                              linkType: "BR:Playlist",
+                              active: true,
+                              version: 93,
+                              accountId: "epic",
+                              creatorName: "Epic",
+                              descriptionTags: [],
+                              metadata: {
+                                 matchmaking: {
+                                    override_playlist:
+                                       "playlist_respawn_24_alt",
+                                 },
+                              },
+                           },
+                           isFavorite: false,
+                        },
+                     ],
+                     hasMore: false,
+                  },
+               ],
+            },
+            {
+               PanelName: "FeaturedV2_17.50_Launch",
+               Pages: [
+                  {
+                     results: [
+                        {
+                           linkData: {
+                              mnemonic: "playlist_defaultsolo",
+                              linkType: "BR:Playlist",
+                              active: true,
+                              version: 93,
+                              accountId: "epic",
+                              creatorName: "Epic",
+                              descriptionTags: [],
+                              metadata: {
+                                 matchmaking: {
+                                    override_playlist: "playlist_defaultsolo",
+                                 },
+                              },
+                           },
+                           isFavorite: false,
+                        },
+                        {
+                           linkData: {
+                              mnemonic: "playlist_defaultduo",
+                              linkType: "BR:Playlist",
+                              active: true,
+                              version: 93,
+                              accountId: "epic",
+                              creatorName: "Epic",
+                              descriptionTags: [],
+                              metadata: {
+                                 matchmaking: {
+                                    override_playlist: "playlist_defaultduo",
+                                 },
+                              },
+                           },
+                           isFavorite: false,
+                        },
+                        {
+                           linkData: {
+                              mnemonic: "playlist_trios",
+                              linkType: "BR:Playlist",
+                              active: true,
+                              version: 93,
+                              accountId: "epic",
+                              creatorName: "Epic",
+                              descriptionTags: [],
+                              metadata: {
+                                 matchmaking: {
+                                    override_playlist: "playlist_trios",
+                                 },
+                              },
+                           },
+                           isFavorite: false,
+                        },
+                        {
+                           linkData: {
+                              mnemonic: "playlist_defaultsquad",
+                              linkType: "BR:Playlist",
+                              active: true,
+                              version: 93,
+                              accountId: "epic",
+                              creatorName: "Epic",
+                              descriptionTags: [],
+                              metadata: {
+                                 matchmaking: {
+                                    override_playlist: "playlist_defaultsquad",
+                                 },
+                              },
+                           },
+                           isFavorite: false,
+                        },
+                     ],
+                     hasMore: false,
+                  },
+               ],
+            },
+            {
+               PanelName: "ByEpic_17.50_Launch",
+               Pages: [
+                  {
+                     results: [
+                        {
+                           linkData: {
+                              mnemonic: "playlist_fritter_40",
+                              linkType: "BR:Playlist",
+                              active: true,
+                              version: 93,
+                              accountId: "epic",
+                              creatorName: "Epic",
+                              descriptionTags: [],
+                              metadata: {
+                                 matchmaking: {
+                                    override_playlist: "playlist_fritter_40",
+                                 },
+                              },
+                           },
+                           isFavorite: false,
+                        },
+                        {
+                           linkData: {
+                              mnemonic: "Playlist_Buffet".toLowerCase(),
+                              linkType: "BR:Playlist",
+                              active: true,
+                              version: 93,
+                              accountId: "epic",
+                              creatorName: "Epic",
+                              descriptionTags: [],
+                              metadata: {
+                                 matchmaking: {
+                                    override_playlist:
+                                       "Playlist_Buffet".toLowerCase(),
+                                 },
+                              },
+                           },
+                           isFavorite: false,
+                        },
+                        {
+                           linkData: {
+                              mnemonic: "playlist_music_highest",
+                              linkType: "BR:Playlist",
+                              active: true,
+                              version: 93,
+                              accountId: "epic",
+                              creatorName: "Epic",
+                              descriptionTags: [],
+                              metadata: {
+                                 matchmaking: {
+                                    override_playlist: "playlist_music_highest",
+                                 },
+                              },
+                           },
+                           isFavorite: false,
+                        },
+                        {
+                           linkData: {
+                              mnemonic: "playlist_vamp_duo",
+                              linkType: "BR:Playlist",
+                              active: true,
+                              version: 93,
+                              accountId: "epic",
+                              creatorName: "Epic",
+                              descriptionTags: [],
+                              metadata: {
+                                 matchmaking: {
+                                    override_playlist: "playlist_vamp_duo",
+                                 },
+                              },
+                           },
+                           isFavorite: false,
+                        },
+                        {
+                           linkData: {
+                              mnemonic: "playlist_dadbro_squads_12",
+                              linkType: "BR:Playlist",
+                              active: true,
+                              version: 93,
+                              accountId: "epic",
+                              creatorName: "Epic",
+                              descriptionTags: [],
+                              metadata: {
+                                 matchmaking: {
+                                    override_playlist:
+                                       "playlist_dadbro_squads_12",
+                                 },
+                              },
+                           },
+                           isFavorite: false,
+                        },
+                        {
+                           linkData: {
+                              mnemonic: "playlist_race_12",
+                              linkType: "BR:Playlist",
+                              active: true,
+                              version: 93,
+                              accountId: "epic",
+                              creatorName: "Epic",
+                              descriptionTags: [],
+                              metadata: {
+                                 matchmaking: {
+                                    override_playlist: "playlist_race_12",
+                                 },
+                              },
+                           },
+                           isFavorite: false,
+                        },
+                        {
+                           linkData: {
+                              mnemonic:
+                                 "Playlist_Respawn_20_Lava".toLowerCase(),
+                              linkType: "BR:Playlist",
+                              active: true,
+                              version: 93,
+                              accountId: "epic",
+                              creatorName: "Epic",
+                              descriptionTags: [],
+                              metadata: {
+                                 matchmaking: {
+                                    override_playlist:
+                                       "Playlist_Respawn_20_Lava".toLowerCase(),
+                                 },
+                              },
+                           },
+                           isFavorite: false,
+                        },
+                        {
+                           linkData: {
+                              mnemonic:
+                                 "Playlist_Barrier_16_B_Lava".toLowerCase(),
+                              linkType: "BR:Playlist",
+                              active: true,
+                              version: 93,
+                              accountId: "epic",
+                              creatorName: "Epic",
+                              descriptionTags: [],
+                              metadata: {
+                                 matchmaking: {
+                                    override_playlist:
+                                       "Playlist_Barrier_16_B_Lava".toLowerCase(),
+                                 },
+                              },
+                           },
+                           isFavorite: false,
+                        },
+                        {
+                           linkData: {
+                              mnemonic: "Playlist_Fill_Solo".toLowerCase(),
+                              linkType: "BR:Playlist",
+                              active: true,
+                              version: 93,
+                              accountId: "epic",
+                              creatorName: "Epic",
+                              descriptionTags: [],
+                              metadata: {
+                                 matchmaking: {
+                                    override_playlist:
+                                       "Playlist_Fill_Solo".toLowerCase(),
+                                 },
+                              },
+                           },
+                           isFavorite: false,
+                        },
+                        {
+                           linkData: {
+                              mnemonic: "Playlist_Classic_Squads".toLowerCase(),
+                              linkType: "BR:Playlist",
+                              active: true,
+                              version: 93,
+                              accountId: "epic",
+                              creatorName: "Epic",
+                              descriptionTags: [],
+                              metadata: {
+                                 matchmaking: {
+                                    override_playlist:
+                                       "Playlist_Classic_Squads".toLowerCase(),
+                                 },
+                              },
+                           },
+                           isFavorite: false,
+                        },
+                        {
+                           linkData: {
+                              mnemonic: "Playlist_Sword_Solo".toLowerCase(),
+                              linkType: "BR:Playlist",
+                              active: true,
+                              version: 93,
+                              accountId: "epic",
+                              creatorName: "Epic",
+                              descriptionTags: [],
+                              metadata: {
+                                 matchmaking: {
+                                    override_playlist:
+                                       "Playlist_Sword_Solo".toLowerCase(),
+                                 },
+                              },
+                           },
+                           isFavorite: false,
+                        },
+                        {
+                           linkData: {
+                              mnemonic:
+                                 "Playlist_Goose_Duos_16_SP".toLowerCase(),
+                              linkType: "BR:Playlist",
+                              active: true,
+                              version: 93,
+                              accountId: "epic",
+                              creatorName: "Epic",
+                              descriptionTags: [],
+                              metadata: {
+                                 matchmaking: {
+                                    override_playlist:
+                                       "Playlist_Goose_Duos_16_SP".toLowerCase(),
+                                 },
+                              },
+                           },
+                           isFavorite: false,
+                        },
+                     ],
+                     hasMore: false,
+                  },
+               ],
+            },
+         ],
+         TestCohorts: ["V2_17_50_Launch"],
+      })
+);
+
 	
 }; // END MODULE
