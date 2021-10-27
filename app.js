@@ -47,6 +47,7 @@ ALSO MAKE SURE TO UPDATE THE VERSION VARIABLE!!!
 1.42.3 - DYNAMITE NOW SUPPORTS HTTPS! [ ALEXDEV404 ]
 1.42.4 - BETTER SSL CERT PATH [ ALEXDEV404 ]
 1.42.5 - PATCH API AND FIX ERRORS [ ALEXDEV404 ]
+1.42.5 - HOTFIX PATH IS NOT DEFINED - FIX [ ZINX ]
 
 */
 
@@ -68,7 +69,7 @@ const https = require("https"); // HTTPS Module
 // Definitions
 
 const REQ_LOGGING = true; // Request Logging is set to false by default
-const version = "1.42.5";
+const version = "1.42.6";
 const cyear = 2021;
 const authors = "Immanuel Garcia, Luke Harris, Kai, Grayson Stowell";
 const windowTitle = "Blaze Server";
