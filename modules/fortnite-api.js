@@ -78,8 +78,20 @@ module.exports = (app) => {
       },
     ]);
   });
+  
+  app.get('/fortnite/api/cloudstorage/system/:filename', (req, res) => {
+    const fileName = req.params.filename;
+    const filePath = hotfixPath + fileName;
+    
+    if (fs.existsSync(filePath)) {
+      res.sendFile(filePath);
+			return;
+    } else {
+      res.status(404).end();
+      return;
+    }
+  });
 
-  //cba adding more
   app.get(
     "/fortnite/api/cloudstorage/system/3460cbe1c57d4a838ace32951a4d7171",
     (req, res) => {
