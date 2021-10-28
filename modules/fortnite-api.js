@@ -160,7 +160,12 @@ module.exports = (app) => {
   app.get("/fortnite/api/v2/versioncheck/:version", (req, res) => {
     res.json({ type: "NO_UPDATE" });
   });
-  
+	
+  // Gold
+  app.get('/fortnite/api/game/v2/br-inventory/account/:accountId', (req, res) => {
+    res.json({"stash": { "globalcash": 100 }})
+  });
+	
   //platform
   app.post(
     "/fortnite/api/game/v2/tryPlayOnPlatform/account/:accountId",
