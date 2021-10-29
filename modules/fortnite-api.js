@@ -161,7 +161,7 @@ module.exports = (app) => {
     res.json({ type: "NO_UPDATE" });
   });
 	
-  // Gold
+  // Gold Bar
   app.get('/fortnite/api/game/v2/br-inventory/account/:accountId', (req, res) => {
     res.json({"stash": { "globalcash": 100 }})
   });
