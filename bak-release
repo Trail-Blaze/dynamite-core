@@ -1,4 +1,4 @@
 dist_name: "Dynamite"
 type: "Standard, No-ingame"
-rel: "1.40.1"
+rel: "1.42.7"
 boot: "node app"
