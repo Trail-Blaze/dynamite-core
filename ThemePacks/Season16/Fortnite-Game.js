@@ -15,8 +15,8 @@ module.exports = (app, port) => {
                         "hidden": false,
                         "_type": "CommonUI Simple Message Base",
                         "subgame": "br",
-                        "body": "Welcome to MythFN",
-                        "title": "Welcome to MythFN",
+                        "body": "Welcome to Blaze",
+                        "title": "Welcome to Blaze",
                         "spotlight": false
                     }, 
                     ],
@@ -862,7 +862,7 @@ module.exports = (app, port) => {
                 "jcr:isCheckedOut": true,
                 "backgrounds": {
                     "backgrounds": [{
-                        "stage": "Season16",
+                        "stage": "Season17",
                         "_type": "DynamicBackground",
                         "key": "lobby"
                     }, {
@@ -879,14 +879,14 @@ module.exports = (app, port) => {
                 "lastModified": "2020-08-27T08:04:47.051Z",
                 "_locale": "en-US"
             },
-            "athenamessage": {
+             "athenamessage": {
                 "_title": "athenamessage",
                 "overrideablemessage": {
                     "_type": "CommonUI Simple Message",
                     "message": {
                         "_type": "CommonUI Simple Message Base",
-                        "title": "Neonite",
-                        "body": "Made by Kemo (@xkem0x). If you have any bugs, you can join our Discord."
+                        "title": "Blaze",
+                        "body": "If you have any bugs, you can join our Discord! Link is in GitHub."
                     }
                 },
                 "_activeDate": "2017-08-30T03:08:31.687Z",
@@ -897,12 +897,12 @@ module.exports = (app, port) => {
                 "news": {
                     "_type": "Battle Royale News",
                     "messages": [{
-                        "image": `http://127.0.0.1:${port}/Neonite1024.png`,
+                        "image": `https://trail-blaze.github.io/res/Blaze/tbico.svg`,
                         "hidden": false,
                         "_type": "CommonUI Simple Message Base",
-                        "adspace": "Neonite v2!",
-                        "title": "Neonite",
-                        "body": "Made by Kemo (@xkem0x). If you have any bugs, you can join our Discord.",
+                        "adspace": "Blaze",
+                        "title": "Blaze",
+                        "body": "Make Sure to Check Out Our Discord!",
                         "spotlight": false
                     }]
                 },
@@ -921,8 +921,8 @@ module.exports = (app, port) => {
                     "_type": "CommonUI Simple Message",
                     "message": {
                         "_type": "CommonUI Simple Message Base",
-                        "title": "Neonite",
-                        "body": "Made by Kemo (@xkem0x). If you have any bugs, you can join our Discord."
+                        "title": "Blaze",
+                        "body": "Make Sure to Check Out Our Discord!"
                     }
                 },
                 "_activeDate": "2017-07-19T13:14:04.490Z",
@@ -1387,23 +1387,23 @@ module.exports = (app, port) => {
                 "news": {
                     "motds": [{
                         "entryType": "Website",
-                        "image": `http://127.0.0.1:${port}/mythfn.png`,
-                        "tileImage": `http://127.0.0.1:${port}/mythfn.png`,
+                        "image": `https://trail-blaze.github.io/res/Blaze/tbico.svg`,
+                        "tileImage": `https://trail-blaze.github.io/res/Blaze/tbico.svg`,
                         "videoMute": false,
                         "hidden": false,
-                        "tabTitleOverride": "MythFN",
+                        "tabTitleOverride": "Blaze",
                         "_type": "CommonUI Simple Message MOTD",
-                        "title": "MythFN",
-                        "body": "Welcome to MythFN! The private server with matchmaking (credit to Storm++ for orginal backend) Created by: Forky and CrankyJedi",
+                        "title": "Blaze",
+                        "body": "Make Sure to Check Out Our Discord!",
                         "videoLoop": false,
                         "videoStreamingEnabled": false,
                         "sortingPriority": 80,
-                        "id": "NeoniteNewsBR",
+                        "id": "BlazeNewsBR",
                         "videoAutoplay": false,
                         "videoFullscreen": false,
                         "spotlight": false,
-                        "websiteURL": "https://discord.gg/UmYFU7xeEX",
-                        "websiteButtonTex" : "Join our discord"
+                        "websiteURL": "https://discord.gg/zgUFzTFf2Y",
+                        "websiteButtonText" : "Join our discord"
                     }
                 ],
                 },
@@ -1422,23 +1422,23 @@ module.exports = (app, port) => {
                 "news": {
                     "motds": [{
                         "entryType": "Website",
-                        "image": `http://127.0.0.1:${port}/Neonite1024.png`,
-                        "tileImage": `http://127.0.0.1:${port}/NeoniteWallpaper1920x1080.png`,
+                        "image": `https://trail-blaze.github.io/res/Blaze/tbico.svg`,
+                        "tileImage": `https://trail-blaze.github.io/res/Blaze/tbico.svg`,
                         "videoMute": false,
                         "hidden": false,
-                        "tabTitleOverride": "Neonite V2",
+                        "tabTitleOverride": "Blaze",
                         "_type": "CommonUI Simple Message MOTD",
-                        "title": "Neonite",
-                        "body": "Made by Kemo (@xkem0x). If you have any bugs, you can join our Discord by clicking the button below.",
+                        "title": "Blaze",
+                        "body": "Make Sure to Check Out Our Discord!",
                         "videoLoop": false,
                         "videoStreamingEnabled": false,
                         "sortingPriority": 80,
-                        "id": "NeoniteNews",
+                        "id": "BlazeNews",
                         "videoAutoplay": false,
                         "videoFullscreen": false,
                         "spotlight": false,
-                        "websiteURL": "https://discord.gg/DJ6VUmD",
-                        "websiteButtonTex" : "Join our discord"
+                        "websiteURL": "https://discord.gg/zgUFzTFf2Y",
+                        "websiteButtonText" : "Join our discord"
                     }
                 ],
                 },
@@ -1458,14 +1458,14 @@ module.exports = (app, port) => {
                 "itemsList": {
                     "_type": "ShopCarouselItemList",
                     "items": [{
-                        "tileImage": `http://127.0.0.1:${port}/NeoniteWallpaper1920x1080.png`,
-                        "fullTitle": "Neonite",
+                        "tileImage": `https://trail-blaze.github.io/res/Blaze/tbico.svg`,
+                        "fullTitle": "Blaze",
                         "hidden": false,
                         "_type": "ShopCarouselItem",
                         "landingPriority": 100,
                         "action": "ShowOfferDetails",
                         "offerId": "v2:/cc29bec6d0bdd2876fb412cf674a7960003bbb76b2eb9b930833a61b604a3b4e",
-                        "title": "Neonite"
+                        "title": "Blaze"
                     }]
                 },
                 "_title": "shop-carousel",
