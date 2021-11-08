@@ -1,7 +1,7 @@
 var date = new Date();
 
 module.exports = (app) => {
-    app.get("/content/api/pages/fortnite-game", (req, res) => {
+    app.get(["/content/api/pages/fortnite-game", "/content/api/pages/"], (req, res) => {
         res.json({
             _title: 'Fortnite Game',
             _activeDate: new Date(),
