@@ -1,5 +1,5 @@
 module.exports = (app, port) => {
-    app.get("/content/api/pages/fortnite-game", (req, res) => {
+    app.get(["/content/api/pages/fortnite-game", "/content/api/pages/"], (req, res) => {
         res.json({
             "jcr:isCheckedOut": true,
             "_title": "Fortnite Game",
