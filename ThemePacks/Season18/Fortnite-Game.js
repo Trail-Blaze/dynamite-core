@@ -1,5 +1,5 @@
 module.exports = (app, port) => {
-    app.get("/content/api/pages/fortnite-game", (req, res) => {
+    app.get(["/content/api/pages/fortnite-game", "/content/api/pages/"], (req, res) => {
 		const content = (await axios.get('https://fortnitecontent-website-prod07.ol.epicgames.com/content/api/pages/fortnite-game').catch(() => {}))?.data;
         res.json({
             "jcr:isCheckedOut": true,
