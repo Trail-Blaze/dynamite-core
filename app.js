@@ -85,7 +85,7 @@ let STATUS;
 
 const port = {
    port: null,
-   portHTTP: null,
+  // portHTTP: null,
 };
 
 const bcolor = {
