@@ -27,7 +27,7 @@ We take **NO** responsibility and/or liability for how you choose to use any of 
 
 We take **NO** responsibility for the abuse of Epic Games' Services, this backend, or how you volunarily choose to use **ANY** information given in the related scripts and documentation.
 
-## **WE DO NOT GRANT PERMISSIONS TO USE DYNAMITE TO BREAK THE LAW.**
+## **WE DO NOT GRANT PERMISSIONS TO USE DYNAMITE TO BREAK THE LAW!**
 
 As Dynamite is in open-beta stage, it is likely that bugs occur. I disclaim any warranty for Dynamite it is provided "AS IS".
 
