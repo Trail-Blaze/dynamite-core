@@ -44,7 +44,7 @@ DELETE
 
 
 POST
-
+/fortnite/api/game/v2/profileToken/verify/:accountId
 /fortnite/api/game/v2/tryPlayOnPlatform/account/:accountId
 /fortnite/api/game/v2/profile/:accountId/client/:command
 /account/api/public/account/:accountId/deviceAuth
