@@ -26,6 +26,10 @@ module.exports = (app) => {
 		res.json(require("../lobby/systemConfig.json"));
    });
 	
+   app.get("/fortnite/api/v1/Fortnite/get", (req, res) => {
+		res.status(204).send();
+   });
+	
   //cloudstorage
   app.get("/fortnite/api/cloudstorage/system", async (req, res) => {
     //inspiration: https://github.com/AlexDev404/AuroraFN-Backend/blob/3db03fa403387b7e829304e947f6e24fe9c3fa6c/routes/services/cloudstorage.js#L25
