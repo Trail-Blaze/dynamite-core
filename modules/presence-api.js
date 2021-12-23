@@ -14,11 +14,19 @@ along with this program.  If not, see http://www.gnu.org/licenses/old-licenses/g
 */
 
 module.exports = (app) => {
-  //game presence
+  // Game presence. Return NULL Array for everything
+  app.all('/presence/api/v1/*', (req, res) => { 
+    res.json([]); 
+  })
+  
+  /*
   app.get(
     "/presence/api/v1/_/:accountId/settings/subscriptions",
     (req, res) => {
       res.status(204).end();
     }
   );
+  */
+  
+  // PRESENCE_API_MODULE_END
 };  
