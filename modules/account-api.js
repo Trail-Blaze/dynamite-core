@@ -21,4 +21,32 @@ module.exports = (app) => {
       res.json([]);
     }
   );
+  
+  	app.post("/api/v1/user/setting", (req, res) => {
+		res.json([
+			{
+				"accountId": req.body.accountId,
+				"key": "avatar",
+				"value": "cid_005_athena_commando_m_default" // CHARACTER ID #005, STW_ATHENA COMMANDO MALE DEFAULT ~ Jonesy Character Male Default
+        
+        // "VALUE" COULD BE ANYTHING REALLY (WITHIN SCOPE OF SKIN ID, BUT LET'S JUST USE THIS AS DEFAULT)
+        // SEE 
+        // https://docs.google.com/spreadsheets/d/1gVDgnzNyMCafIWa-dBO3mgNUHmHzgA9O5sWbfQy2Yfg/edit#gid=0 
+        // FOR A LIST OF VALID IDS
+        
+			},
+			{
+				"accountId": req.body.accountId,
+				"key": "avatarBackground",
+				"value": "[\"#FFA812\",\"#C9850E\",\"#614109\"]" // GRADIENT OF BRIGHT ORANGE TO DARK ORANGE
+			},
+			{
+				"accountId": req.body.accountId,
+				"key": "appInstalled",
+				"value": "init"
+			}])
+	})
+
+  
+  
 };
