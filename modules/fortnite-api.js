@@ -26,7 +26,7 @@ module.exports = (app) => {
 		res.json(require("../lobby/systemConfig.json"));
    });
 	
-   app.get("/fortnite/api/v1/Fortnite/get", (req, res) => {
+   app.get("/api/v1/Fortnite/get", (req, res) => {
 		res.status(204).send();
    });
 	

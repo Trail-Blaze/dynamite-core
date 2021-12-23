@@ -44,8 +44,8 @@ module.exports = (app) => {
 				"accountId": req.body.accountId,
 				"key": "appInstalled",
 				"value": "init"
-			}])
-	})
+			}]);
+	});
 
   
   

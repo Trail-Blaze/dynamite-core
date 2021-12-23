@@ -22,7 +22,7 @@ module.exports = (app) => {
   });
 	
   //blocked people list (redundant version of above)
-  app.get("/friends/api/v1/:accoundId/blocklist", (req, res) => {
+  app.get("/friends/api/v1/:accountId/blocklist", (req, res) => {
     res.json({
       blockedUsers: [],
     });
