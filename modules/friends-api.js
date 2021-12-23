@@ -20,6 +20,14 @@ module.exports = (app) => {
       blockedUsers: [],
     });
   });
+	
+  //blocked people list (redundant version of above)
+  app.get("/friends/api/v1/:accoundId/blocklist", (req, res) => {
+    res.json({
+      blockedUsers: [],
+    });
+  });
+	
 
   //setting for account
   app.get("/friends/api/v1/:accountId/settings", (req, res) => {
@@ -43,7 +51,7 @@ module.exports = (app) => {
 
 
 // Recent Users
-  app.get("/friends/api/v1/*/recent/fortnite", (req, res) => {
+  app.get("/friends/api/v1/:accountId/recent/fortnite", (req, res) => {
     res.json([]);    
 });
   
