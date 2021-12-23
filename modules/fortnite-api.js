@@ -671,6 +671,8 @@ app.post(
          TestCohorts: ["V2_17_50_Launch"],
       })
 );
-
+	app.post("/fortnite/api/game/v2/profileToken/verify/:accountId", (req, res) => {
+		res.status(204).end() 
+	});
 	
 }; // END MODULE
