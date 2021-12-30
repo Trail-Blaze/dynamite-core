@@ -17,7 +17,7 @@ module.exports = (app) => {
   
 //affiliate api (recoded by slushy#0001)
   app.get("/affiliate/api/public/affiliates/slug/:slug", async (req, res) => {
-    const SAC = require("./SAC.json");
+    const SAC = require("../lib/SAC.json");
     SAC.forEach(code => {
         if (req.params.slug.toLowerCase() == code.toLowerCase()) {
             return res.json({
