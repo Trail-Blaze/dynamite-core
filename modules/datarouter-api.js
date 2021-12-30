@@ -16,6 +16,6 @@ along with this program.  If not, see http://www.gnu.org/licenses/old-licenses/g
 module.exports = (app) => {
   //data router
   app.post("/datarouter/api/v1/public/*", (req, res) => {
-    res.status(200).send();
+    res.status(200).end();
   });
 };

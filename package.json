@@ -32,6 +32,7 @@
     "express": "^4.17.1",
     "fs": "0.0.1-security",
     "get-port": "^5.1.1",
+    "get-random-values": "^1.2.2",
     "https": "^1.0.0",
     "jsonwebtoken": "^8.5.1",
     "safer-buffer": "^2.1.2",

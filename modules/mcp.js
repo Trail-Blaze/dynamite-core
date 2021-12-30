@@ -65,8 +65,40 @@ module.exports = (app) => {
          switch (command) {
             case "ClientQuestLogin":
                break;
-            // case "CopyCosmeticLoadout":
-            // 	break;
+               case "CopyCosmeticLoadout": {
+				//sourceIndex = 0 (Save)
+				//sourceIndex > 0 (Load)
+				checkValidProfileID("athena");
+				var item;
+
+				if (req.body.sourceIndex == 0) {
+					item = profileData.items[`neoset${req.body.targetIndex}_loadout`];
+					profileData.items[`neoset${req.body.targetIndex}_loadout`] = profileData.items["sandbox_loadout"];
+					profileData.items[`neoset${req.body.targetIndex}_loadout`].attributes["locker_name"] = req.body.optNewNameForTarget;
+					profileData.stats.attributes.loadouts[req.body.targetIndex] = `neoset${req.body.targetIndex}_loadout`;
+				} else {
+					item = profileData.items[`neoset${req.body.sourceIndex}_loadout`];
+
+					if (!item) {
+						throw next(new ApiException(errors.com.epicgames.fortnite.item_not_found).withMessage("Locker item {0} not found", req.body.lockerItem));
+					}
+
+					profileData.stats.attributes["active_loadout_index"] = req.body.sourceIndex;
+					profileData.stats.attributes["last_applied_loadout"] = `neoset${req.body.sourceIndex}_loadout`;
+					profileData.items["sandbox_loadout"].attributes["locker_slots_data"] = item.attributes["locker_slots_data"];
+				}
+
+				Profile.saveProfile(accountId, profileId, profileData);
+				Profile.bumpRvn(profileData);
+				response.profileRevision = profileData.rvn || 1;
+				response.profileCommandRevision = profileData.commandRevision || 1;
+				response.profileChanges = [{
+					"changeType": "fullProfileUpdate",
+					"profile": profileData
+				}];
+				Profile.saveProfile(accountId, profileId, profileData);
+				break;
+			}
             case "MarkItemSeen":
                checkValidProfileID("common_core", "campaign", "athena");
                req.body.itemIds.forEach((itemId) =>

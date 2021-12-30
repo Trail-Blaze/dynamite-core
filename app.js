@@ -49,6 +49,9 @@ ALSO MAKE SURE TO UPDATE THE VERSION VARIABLE!!!
 1.42.5 - PATCH API AND FIX ERRORS [ ALEXDEV404 ]
 1.42.6 - HOTFIX PATH IS NOT DEFINED - FIX [ ZINX ]
 1.42.7 - FRIENDS SUMMARY [ ALEXDEV404 ]
+1.42.8 - CHOICE OF PORT USING PORTFILE + APP.JS CODE REFLOW TO PREVENT RACE CONDITIONS [ ALEXDEV404 ]
+1.24.8 - "SAC" AFFILIATE API ADDITIONS + REWRITE [ SLUSHNIX ]
+1.42.8 - 400 LINES NOW! [ ALEXDEV404 ]
 
 */
 
@@ -66,6 +69,7 @@ const app = express(); // Create an express application
 const runfiles = "./modules"; // All core libraries and scripts required for Blaze to run
 const path = require("path"); // Used for file extension filter
 const https = require("https"); // HTTPS Module
+const filename_log = "./lib/port.json";
 
 // Definitions
 
@@ -75,7 +79,7 @@ const cyear = 2021;
 const authors = "Immanuel Garcia, Luke Harris, Kai, Grayson Stowell, Scott";
 const windowTitle = "Blaze Server";
 const b_logo =
-   '                                                    \n88888888ba   88                                     \n88      "8b  88                                     \n88      ,8P  88                                     \n88aaaaaa8P\'  88  ,adPPYYba,  888888888   ,adPPYba,  \n88""""""8b,  88  ""     `Y8       a8P"  a8P_____88  \n88      `8b  88  ,adPPPPP88    ,d8P\'    8PP"""""""  \n88      a8P  88  88,    ,88  ,d8"       "8b,   ,aa  \n88888888P"   88  `"8bbdP"Y8  888888888   `"Ybbd8"\'  \n                                                    \n                                                    '; // ASCII Logo
+  '                                                    \n88888888ba   88                                     \n88      "8b  88                                     \n88      ,8P  88                                     \n88aaaaaa8P\'  88  ,adPPYYba,  888888888   ,adPPYba,  \n88""""""8b,  88  ""     `Y8       a8P"  a8P_____88  \n88      `8b  88  ,adPPPPP88    ,d8P\'    8PP"""""""  \n88      a8P  88  88,    ,88  ,d8"       "8b,   ,aa  \n88888888P"   88  `"8bbdP"Y8  888888888   `"Ybbd8"\'  \n                                                    \n                                                    '; // ASCII Logo
 const baseDir = __dirname;
 const useSecureHTTPS = false;
 let server;
@@ -83,21 +87,21 @@ let STATUS;
 
 // Imported and converted from a Python Project
 
-const port = {
-   port: null,
+let port = {
+  port: null,
   // portHTTP: null,
 };
 
 const bcolor = {
-   HEADER: "\033[95m",
-   OKBLUE: "\033[94m",
-   OKCYAN: "\033[96m",
-   OKGREEN: "\033[92m",
-   WARN: "\033[93m",
-   FAIL: "\033[91m",
-   END: "\033[0m",
-   BOLD: "\033[1m",
-   UNDERLINE: "\033[4m",
+  HEADER: "\033[95m",
+  OKBLUE: "\033[94m",
+  OKCYAN: "\033[96m",
+  OKGREEN: "\033[92m",
+  WARN: "\033[93m",
+  FAIL: "\033[91m",
+  END: "\033[0m",
+  BOLD: "\033[1m",
+  UNDERLINE: "\033[4m",
 };
 
 // HTTPS Configuration
@@ -105,14 +109,14 @@ const bcolor = {
 var key = fs.readFileSync(__dirname + "/certs/cert.key");
 var cert = fs.readFileSync(__dirname + "/certs/cert.crt");
 var options = {
-   key: key,
-   cert: cert,
+  key: key,
+  cert: cert,
 };
 
 // A sleep function I found somewhere just in case
 
 const sleep = (milliseconds) => {
-   return new Promise((resolve) => setTimeout(resolve, milliseconds));
+  return new Promise((resolve) => setTimeout(resolve, milliseconds));
 };
 
 // Main application starts here!
@@ -130,13 +134,13 @@ app.use(express.urlencoded({ extended: false }));
 app.set("etag", false);
 
 if (REQ_LOGGING) {
-   // https://expressjs.com/en/guide/using-middleware.html#middleware.application
+  // https://expressjs.com/en/guide/using-middleware.html#middleware.application
 
-   app.use((req, res, next) => {
-      // res (response variable) is never used in this scope
-      console.log(`${bcolor.OKGREEN}[${req.method}]${bcolor.END}`, req.url); // Logs the response URL to the console
-      next();
-   });
+  app.use((req, res, next) => {
+    // res (response variable) is never used in this scope
+    console.log(`${bcolor.OKGREEN}[${req.method}]${bcolor.END}`, req.url); // Logs the response URL to the console
+    next();
+  });
 }
 // https://expressjs.com/en/starter/static-files.html
 
@@ -154,100 +158,98 @@ let dirPath = path.resolve(runfiles); // path to your directory goes here
 let filesList;
 
 fs.readdir(dirPath, function (err, files) {
-   if (err) {
-      console.log("not found");
-   } else {
-      filesList = files.filter(function (e) {
-         return path.extname(e).toLowerCase() === ".js";
-      });
-      //  console.log(filesList);
-   }
+  if (err) {
+    console.log("not found");
+  } else {
+    filesList = files.filter(function (e) {
+      return path.extname(e).toLowerCase() === ".js";
+    });
+    //  console.log(filesList);
+  }
 });
 
 init(); // Run init function
 
 async function init() {
-   await sleep(500); // Display main title for a bit then go onto the main stuffs
+  await sleep(500); // Display main title for a bit then go onto the main stuffs
 
-   // https://github.com/sindresorhus/get-port/
-   // https://www.npmjs.com/package/get-port
+  // https://github.com/sindresorhus/get-port/
+  // https://www.npmjs.com/package/get-port
 
-   // For HTTPS port 443
+  // For HTTPS port 443
 
-   if (useSecureHTTPS) {
-      port.port = 443; //443
-      port.portHTTP = 80; //80
-      server = https.createServer(options, app); // Setup as HTTPS server if secure HTTPS is enabled
-      process.on("uncaughtException", () =>
-         console.error(
-            `${bcolor.FAIL}[ERR_CANNOT_START]${bcolor.END}${bcolor.WARN} Dynamite cannot claim port ${port.port}! If this port is already in use, please stop any programs that might be using it and then try starting Dynamite again. If running in a Docker container such as GitHub Codespaces, note that Dynamite is not designed to run inside one of these, and as a result may cause errors such as these.${bcolor.END}\n`
-         )
-      );
-   }
-   if (!useSecureHTTPS) {
-      port.port =
-         process.env.app_port || (await getPort({ port: [5595, 80, 8080] })); // Dynamically fetches a random getPort
-      server = app; // Setup as HTTP server is secure HTTPS is disabled
-   }
+  if (useSecureHTTPS) {
+    port.port = 443; //443
+    port.portHTTP = 80; //80
+    server = https.createServer(options, app); // Setup as HTTPS server if secure HTTPS is enabled
+    process.on("uncaughtException", () =>
+      console.error(
+        `${bcolor.FAIL}[ERR_CANNOT_START]${bcolor.END}${bcolor.WARN} Dynamite cannot claim port ${port.port}! If this port is already in use, please stop any programs that might be using it and then try starting Dynamite again. If running in a Docker container such as GitHub Codespaces, note that Dynamite is not designed to run inside one of these, and as a result may cause errors such as these.${bcolor.END}\n`
+      )
+    );
+    main();
+  }
+  if (!useSecureHTTPS) {
+    // v1.42.8 -- Allow the choice of port using the port JSON file
+    fs.access(filename_log, fs.F_OK, (err) => {
+      if (err) {
+        processDied();
+        return 0;
+      }
+      readPort();
+    });
 
-   var portjson = JSON.stringify(port, null, 3);
-   server.listen(port.port, () => {
-      console.clear();
-      exec(`title ${windowTitle} is listening on localhost port ${port.port}`); // Switch title to Blaze Server is listening on port {port}.
+    server = app; // Setup as HTTP server is secure HTTPS is disabled
+  }
 
-      // Saves Port Number To File
-      // https://www.w3schools.com/nodejs/nodejs_filesystem.asp
 
-      start(); // Display Disclaimer and start Blaze
+}
 
-      const filename_log = "port.json";
+function main(){
+  server.listen(port.port, () => {
+    console.clear(); // Switch title to Blaze Server is listening on port {port.port}.
 
-      // Creates File if Not Found
-      // https://flaviocopes.com/how-to-check-if-file-exists-node/
+    // Saves Port Number To File
+    // https://www.w3schools.com/nodejs/nodejs_filesystem.asp
 
-      fs.access(filename_log, fs.F_OK, (err) => {
-         if (err) {
-            // console.error(err); // For debugging purposes
+    start(); // Display Disclaimer and start Blaze
 
-            console.log(
-               `${bcolor.OKBLUE}[INFO]${bcolor.END}`,
-               `File ${filename_log} Not Found! Is this a first-time run?`
-            );
-            console.log(
-               `${bcolor.OKBLUE}[INFO]${bcolor.END}`,
-               `File ${filename_log} Creating one...`
-            );
+    // Creates File if Not Found
+    // https://flaviocopes.com/how-to-check-if-file-exists-node/
 
-            createPortfile();
+    fs.access(filename_log, fs.F_OK, (err) => {
+      if (err) {
+        // console.error(err); // For debugging purposes
 
-            return 0;
-         } // Deletes File if Found
+        console.log(
+          `${bcolor.OKBLUE}[INFO]${bcolor.END}`,
+          `File ${filename_log} Not Found! Is this a first-time run?`
+        );
+        console.log(
+          `${bcolor.OKBLUE}[INFO]${bcolor.END}`,
+          `File ${filename_log} Creating one...`
+        );
+
+        createPortfile();
+
+        return 0;
+      }
+      /*
+         // Deletes File if Found
          fs.unlink(`${filename_log}`, function (err) {
             if (err) throw err;
             console.log(
                `${bcolor.OKBLUE}[INFO]${bcolor.END}`,
                `File ${filename_log} found. Deleting...\n`
             );
+
          });
+*/
+    });
 
-         createPortfile();
+    // Check for modules directory
 
-         function createPortfile() {
-            // Recreates File With Correct Port Number
-
-            fs.writeFile(`${filename_log}`, portjson, "utf8", function (err) {
-               if (err) throw err;
-               console.log(
-                  `${bcolor.OKBLUE}[INFO]${bcolor.END}`,
-                  `Saved Port Number to ${filename_log}\n`
-               );
-            });
-         }
-      });
-
-      // Check for manager directory
-
-      /* fs.access("./managers", function(error) {
+    /* fs.access("./managers", function(error) {
   if (error) {
     console.log("Directory does not exist.")
   } else {
@@ -255,104 +257,93 @@ async function init() {
   }
 })*/
 
-      // PATCH 1.30.6! SWITCH TO NEONITE LIB!
-      function start() {
-         fs.access(runfiles, async function (err) {
-            if (err) {
-               // Stage 1 Fails
+    // PATCH 1.30.6! SWITCH TO NEONITE LIB!
+    function start() {
+      fs.access(runfiles, async function (err) {
+        if (err) {
+          // Stage 1 Fails
 
-               exec(`title ${windowTitle} has failed to load!`); // Switch title to "Blaze Server has failed to load!".
+          exec(`title ${windowTitle} has failed to load!`); // Switch title to "Blaze Server has failed to load!".
 
-               console.error(
-                  `${bcolor.FAIL}Core Directory Does Not Exist. Blaze Cannot Continue to Launch.${bcolor.END}`
-               );
-               console.log("\n");
-               console.log(
-                  `${bcolor.HEADER}Blaze has ${bcolor.FAIL}FAILED${bcolor.END}${bcolor.HEADER} to launch!${bcolor.END}`
-               );
-               console.log("\n");
-               console.error(
-                  `${bcolor.FAIL}THE FULL ERROR IS DISPLAYED BELOW:`
-               );
-               console.error(err);
-               console.log(
-                  `${bcolor.HEADER}To exit, hit any key.${bcolor.END}\n`
-               );
-               process.exit();
-            } else {
-               // Stage 1 Passes
-               console.log("\n");
-               console.log(
-                  "Core directory exists. Loading required files...\n"
-               );
+          console.error(
+            `${bcolor.FAIL}Core Directory Does Not Exist. Blaze Cannot Continue to Launch.${bcolor.END}`
+          );
+          console.log("\n");
+          console.log(
+            `${bcolor.HEADER}Blaze has ${bcolor.FAIL}FAILED${bcolor.END}${bcolor.HEADER} to launch!${bcolor.END}`
+          );
+          console.log("\n");
+          console.error(`${bcolor.FAIL}THE FULL ERROR IS DISPLAYED BELOW:`);
+          console.error(err);
+          console.log(`${bcolor.HEADER}To exit, hit any key.${bcolor.END}\n`);
+          process.exit();
+        } else {
+          // Stage 1 Passes
+          console.log("\n");
+          console.log("Core directory exists. Loading required files...\n");
 
-               for (let range = 0; range < filesList.length; range++) {
-                  require(`${runfiles}/${filesList[range]}`)(app, port.port);
-                  console.log(
-                     `${bcolor.OKCYAN}[OK] Importing: ${runfiles}/${filesList[range]}${bcolor.END}`
-                  );
-               }
-               const theme = require("./ThemePacks/CurrentTheme.js")(
-                  app,
-                  port.port
-               ); // Load theme
-               console.log("\n");
+          for (let range = 0; range < filesList.length; range++) {
+            require(`${runfiles}/${filesList[range]}`)(app, port.port);
+            console.log(
+              `${bcolor.OKCYAN}[OK] Importing: ${runfiles}/${filesList[range]}${bcolor.END}`
+            );
+          }
+          const theme = require("./ThemePacks/CurrentTheme.js")(app, port.port); // Load theme
+          console.log("\n");
 
-               // Replaced shit code with better code.
-               /*  fs.readdirSync(`${__dirname}/managers`).forEach(route => { //for the managers folder
+          // Replaced shit code with better code.
+          /*  fs.readdirSync(`${__dirname}/managers`).forEach(route => { //for the managers folder
             require(`${__dirname}/managers/${route}`)(app, 5595); //port number = 5595 
           })*/
 
-               // NEONITE STARTS
+          // NEONITE STARTS
 
-               app.use((req, res, next) => {
-                  next(new ApiException(errors.com.dynamite.common.not_found));
-               });
+          app.use((req, res, next) => {
+            next(new ApiException(errors.com.dynamite.common.not_found));
+          });
 
-               app.use((err, req, res) => {
-                  let error = null;
+          app.use((err, req, res) => {
+            let error = null;
 
-                  if (err instanceof ApiException) {
-                     error = err;
-                  } else {
-                     const trackingId =
-                        req.headers["x-epic-correlation-id"] || uuidv4();
-                     error = new ApiException(
-                        errors.com.dynamite.common.server_error
-                     ).with(trackingId);
-                     console.error(trackingId, err);
-                  }
-
-                  error.apply(res);
-               });
-
-               // Neonite ENDS
-
-               await sleep(2000);
-
-               console.clear();
-               console.log("\n");
-               console.log(
-                  `${bcolor.OKCYAN}${bcolor.BOLD}${b_logo}${bcolor.END}`
-               );
-               console.log("\n");
-               console.log(
-                  `${bcolor.OKGREEN}Blaze version ${version}, Copyright (C) ${cyear} ${authors}\nBlaze comes with ABSOLUTELY NO WARRANTY.\n\nThis is free software, and you are welcome to redistribute it under certain conditions.\nFor more information, please refer to the bundled LICENSE file.${bcolor.END}`
-               );
-               console.log("\n");
-               useSecureHTTPS ? (STATUS = "[HTTPS]") : (STATUS = "[HTTP]");
-               if (useSecureHTTPS) {
-                  app.listen(port.portHTTP); // Startup Optional HTTP Server
-               }
-               mesg();
-               console.log(
-                  `${bcolor.HEADER}To exit, hit CTRL + C at any time.${bcolor.END}\n`
-               );
+            if (err instanceof ApiException) {
+              error = err;
+            } else {
+              const trackingId =
+                req.headers["x-epic-correlation-id"] || uuidv4();
+              error = new ApiException(
+                errors.com.dynamite.common.server_error
+              ).with(trackingId);
+              console.error(trackingId, err);
             }
-         });
-      }
-      // Run Color Tests
-      /*
+
+            error.apply(res);
+          });
+
+          // Neonite ENDS
+
+          await sleep(2000);
+
+          console.clear();
+          console.log("\n");
+          console.log(`${bcolor.OKCYAN}${bcolor.BOLD}${b_logo}${bcolor.END}`);
+          console.log("\n");
+          console.log(
+            `${bcolor.OKGREEN}Blaze version ${version}, Copyright (C) ${cyear} ${authors}\nBlaze comes with ABSOLUTELY NO WARRANTY.\n\nThis is free software, and you are welcome to redistribute it under certain conditions.\nFor more information, please refer to the bundled LICENSE file.${bcolor.END}`
+          );
+          console.log("\n");
+          useSecureHTTPS ? (STATUS = "[HTTPS]") : (STATUS = "[HTTP]");
+          if (useSecureHTTPS) {
+            app.listen(port.portHTTP); // Startup Optional HTTP Server
+          }
+          mesg();
+          console.log(
+            `${bcolor.HEADER}To exit, hit CTRL + C at any time.${bcolor.END}\n`
+          );
+        }
+      });
+    }
+    // Run Color Tests
+    /*
     
     console.log(`${bcolor.HEADER}HEADER${bcolor.END}`);
     console.log(`${bcolor.OKBLUE}OKBLUE${bcolor.END}`);
@@ -363,25 +354,51 @@ async function init() {
     console.log(`${bcolor.BOLD}BOLD${bcolor.END}`);
     console.log(`${bcolor.UNDERLINE}UNDERLINE${bcolor.END}`);
     */
-   });
+  });
+
 }
 
+
 function mesg() {
-   console.log(
-      `${bcolor.HEADER}Blaze has successfully initialized and is listening on port ${bcolor.FAIL}${port.port}${bcolor.END}${bcolor.HEADER}. ${STATUS}${bcolor.END}`
-   );
-   if (useSecureHTTPS) {
-      console.log(
-         `${bcolor.OKBLUE}[DUAL]${bcolor.END}${bcolor.OKGREEN} Loaded Optional HTTP Server for Usage on port ${bcolor.FAIL}${port.portHTTP}${bcolor.END}${bcolor.OKGREEN}.${bcolor.END}\n`
-      );
-   }
+  console.log(
+    `${bcolor.HEADER}Blaze has successfully initialized and is listening on port ${bcolor.FAIL}${port.port}${bcolor.END}${bcolor.HEADER}. ${STATUS}${bcolor.END}`
+  );
+  if (useSecureHTTPS) {
+    console.log(
+      `${bcolor.OKBLUE}[DUAL]${bcolor.END}${bcolor.OKGREEN} Loaded Optional HTTP Server for Usage on port ${bcolor.FAIL}${port.portHTTP}${bcolor.END}${bcolor.OKGREEN}.${bcolor.END}\n`
+    );
+  }
+}
+
+async function processDied() {
+  port.port =
+    process.env.app_port || (await getPort({ port: [5595, 80, 8080] }));
+}
+
+function readPort() {
+  port = require(filename_log);
+  createPortfile();
+}
+
+function createPortfile() {
+  // Recreates File With Correct Port Number
+  let portjson = JSON.stringify(port, null, 3);
+  fs.writeFile(filename_log, portjson, "utf8", function (err) {
+    if (err) throw err;
+    console.log(
+      `${bcolor.OKBLUE}[INFO]${bcolor.END}`,
+      `Saved Port Number to ${filename_log}\n`
+    );
+  });
+  exec(`title ${windowTitle} is listening on localhost port ${port.port}`);
+  main();
 }
 
 // https://www.sitepoint.com/understanding-module-exports-exports-node-js/
 
 module.exports = {
-   bcolor: bcolor,
-   useSecureHTTPS: useSecureHTTPS,
-   baseDir: baseDir,
-   app: app,
+  bcolor: bcolor,
+  useSecureHTTPS: useSecureHTTPS,
+  baseDir: baseDir,
+  app: app,
 };

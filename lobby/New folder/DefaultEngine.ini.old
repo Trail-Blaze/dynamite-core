@@ -1,0 +1,30 @@
+[/Script/Engine.NetworkSettings]
+n.VerifyPeer=false
+
+[OnlineSubsystemMcp.Xmpp]
+bUseSSL=false
+ServerPort=443
+
+[OnlineSubsystemMcp.Xmpp Prod]
+ServerAddr="ws://localhost:443"
+
+[HTTP.Curl]
+bAllowSeekFunction=false
+
+[PacketHandlerComponents]
+EncryptionComponent=
+Components=
+
+[ConsoleVariables]
+n.VerifyPeer=0
+Store.EnableCatabaScreen=1
+Store.EnableCatabaHighlights=1
+
+[PatchCheck]
+ModuleName=
+bCheckPlatformOSSForUpdate=false
+bCheckOSSForUpdate=false
+
+[/Script/Qos.QosRegionManager]
+!RegionDefinitions=ClearArray
++RegionDefinitions=(DisplayName=NSLOCTEXT("MMRegion", "Blaze", "Blaze"), RegionId="NAW", bEnabled=true, bVisible=true, bAutoAssignable=true)

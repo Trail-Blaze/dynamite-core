@@ -28,7 +28,7 @@ module.exports = (app) => {
 	});
 	
 	app.get("/catalog/api/shared/bulk/offers", function (req, res) { 
-		res.json({}) 
-	})
+		res.json({}); 
+	});
 	
 } // END MODULE EXPORTS
