@@ -15,17 +15,20 @@ along with this program.  If not, see http://www.gnu.org/licenses/old-licenses/g
 
 module.exports = (app) => {
   
-//affiliate api
-  app.get(
-    "/affiliate/api/public/affiliates/slug/:affiliateName",
-    (req, res) => {
-      res.json({
-        id: "aabbccddeeff11223344556677889900",
-        slug: req.params.affiliateName,
-        displayName: req.params.affiliateName,
-        status: "ACTIVE",
-        verified: true,
-      });
-    }
-  );
+//affiliate api (recoded by slushy#0001)
+  app.get("/affiliate/api/public/affiliates/slug/:slug", async (req, res) => {
+    const SAC = require("./SAC.json");
+    SAC.forEach(code => {
+        if (req.params.slug.toLowerCase() == code.toLowerCase()) {
+            return res.json({
+                "id": code,
+                "slug": code,
+                "displayName": code,
+                "status": "ACTIVE",
+                "verified": false
+            });
+        }
+    })
+    res.json({});
+})
 };
