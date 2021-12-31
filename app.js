@@ -76,7 +76,7 @@ const filename_log = "./lib/port.json";
 const REQ_LOGGING = true; // Request Logging is set to false by default
 const version = "1.42.7";
 const cyear = 2021;
-const authors = "Immanuel Garcia, Luke Harris, Kai, Grayson Stowell, Scott";
+const authors = "Immanuel Garcia, Luke Harris, Kai, Grayson Stowell, Scott, John McDowall";
 const windowTitle = "Blaze Server";
 const b_logo =
   '                                                    \n88888888ba   88                                     \n88      "8b  88                                     \n88      ,8P  88                                     \n88aaaaaa8P\'  88  ,adPPYYba,  888888888   ,adPPYba,  \n88""""""8b,  88  ""     `Y8       a8P"  a8P_____88  \n88      `8b  88  ,adPPPPP88    ,d8P\'    8PP"""""""  \n88      a8P  88  88,    ,88  ,d8"       "8b,   ,aa  \n88888888P"   88  `"8bbdP"Y8  888888888   `"Ybbd8"\'  \n                                                    \n                                                    '; // ASCII Logo
