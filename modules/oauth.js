@@ -32,90 +32,32 @@ module.exports = (app) => {
       });
    });
 
-   //token
-   app.post("/account/api/oauth/token", (req, res) => {
-      userName = "";
-      displayName = "";
-      if (req.body.username) {
-        thisUser = req.body.username.split("@")[0];
-        userName = thisUser
-      }
-      else if (req.body.email) userName = req.body.email.split("@")[0];
-      else displayName = `InvalidUser${Math.random().toString().substring(15)}`;
-      accountId = displayName.replace(/ /g, "_");
-      if (!accountId.startsWith("InvalidUser")) {
-         var profileId = "athena";
-         var profileData = Profile.readProfile(accountId, profileId);
-         if (!profileData) {
-            profileData = Profile.readProfileTemplate(profileId);
-            if (!profileData) {
-               throw new ApiException(
-                  errors.com.epicgames.modules.profiles.operation_forbidden
-               ).with(profileId);
-            }
-            profileData.created = profileData.updated =
-               new Date().toISOString();
-            profileData["_id"] = accountId;
-            profileData.accountId = accountId;
-            //await Profile.updatedCos(profileData);
-            try {
-               fs.mkdirSync(`./home/${accountId}/profile`, { recursive: true });
-               Profile.saveProfile(accountId, profileId, profileData);
-            } catch (e) {
-               console.log("Failed creating profile!");
-               throw e;
-            }
-         }
-      }
+    //token
+   app.post("/account/api/oauth/token", async (req, res) => {
+  res.json({
+    "access_token": "trailblaze",
+    "expires_in": 28800,
+    "expires_at": "9999-12-02T01:12:01.100Z",
+    "token_type": "bearer",
+    "refresh_token": "trailblaze",
+    "refresh_expires": 86400,
+    "refresh_expires_at": "9999-12-02T01:12:01.100Z",
+    "account_id": req.body.username || "BlazeUser",
+    "client_id": "trailblaze",
+    "internal_client": true,
+    "client_service": "fortnite",
+    "displayName": req.body.username || "BlazeUser",
+    "app": "fortnite",
+    "in_app_id": req.body.username || "BlazeUser",
+    "device_id": "trailblaze"
+  });
+});
 
-      // Invalid User
-      else userName = thisUser;
-      res.json({
-         access_token: crypto.randomBytes(32).toString("hex"),
-         expires_in: 80000, // Matches Expire_At
-         expires_at: new Date(
-            (new Date().getTime() / 1000 + 80000) * 1000
-         ).toISOString(), // Zulu Time --> Token Expires in 1 Day Time
-         token_type: "bearer",
-         refresh_token: crypto.randomBytes(32).toString("hex"),
-         refresh_expires: 800, // Matches Expire_At
-         refresh_expires_at: new Date(
-            (new Date().getTime() / 1000 + 800) * 1000
-         ), // Zulu Time --> Refresh Token Expires in 7 minutes time
-         account_id: userName,
-         client_id: "clidynamite43obprerelease",
-         internal_client: true,
-         client_service: "Fortnite",
-         scope: [],
-         displayName: userName,
-         app: "Fortnite",
-         in_app_id: userName
-      });
-   });
-   //verification
-   app.get("/account/api/oauth/verify", (req, res) => {
-      res.json({
-         access_token: crypto.randomBytes(32).toString("hex"),
-         expires_in: 80000, // Matches Expire_At
-         expires_at: new Date(
-            (new Date().getTime() / 1000 + 80000) * 1000
-         ).toISOString(), // Zulu Time --> Token Expires in 1 Day Time
-         token_type: "bearer",
-         refresh_token: crypto.randomBytes(32).toString("hex"),
-         refresh_expires: 800, // Matches Expire_At
-         refresh_expires_at: new Date(
-            (new Date().getTime() / 1000 + 800) * 1000
-         ), // Zulu Time --> Refresh Token Expires in 7 minutes time
-         account_id: userName,
-         client_id: "clidynamite43obprerelease",
-         internal_client: true,
-         client_service: "Fortnite",
-         scope: [],
-         displayName: userName,
-         app: "Fortnite",
-         in_app_id: userName
-      });
-   });
+// Verification
+app.get("/account/api/oauth/verify", (req, res) => {
+	res.status(204).end()
+})
+   
    //sign out
    app.delete("/account/api/oauth/sessions/kill", (req, res) => {
       res.status(204).end();
