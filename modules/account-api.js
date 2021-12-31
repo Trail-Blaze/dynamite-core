@@ -21,6 +21,30 @@ module.exports = (app) => {
       res.json([]);
     }
   );
+	
+	// Public Account Details
+app.get('/account/api/public/account/:accountId', async (req, res) => {
+  res.json({
+    "id": req.params.accountId,
+    "displayName": req.params.accountId,
+    "name": "Blaze",
+    "email": req.params.accountId + "@blaze.net",
+    "failedLoginAttempts": 0,
+    "lastLogin": new Date().toISOString(),
+    "numberOfDisplayNameChanges": 0,
+    "ageGroup": "undefined",
+    "headless": false,
+    "country": "US",
+    "lastName": "_User145",
+    "preferredLanguage": "en",
+    "canUpdateDisplayName": false,
+    "tfaEnabled": false,
+    "emailVerified": true,
+    "minorVerified": false,
+    "minorExpected": false,
+    "minorStatus": "NotAMinor"
+  })
+})
   
 
   	app.post("/api/v1/user/setting", (req, res) => {
