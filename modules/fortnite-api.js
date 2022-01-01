@@ -154,6 +154,28 @@ module.exports = (app) => {
 
    //END
   
+      app.get("/fortnite/api/storeaccess/v1/request_access/", (req, res) => {
+      res.status(204).end()
+   });
+
+
+
+   app.get("/api/v1/Fortnite/get", (req, res) => {
+      res.status(204).send();
+   });
+
+
+/*
+
+"/fortnite/api/cloudstorage/system/3460callbacke1c57d4a838ace32951a4d7171" - DefaultEngine.ini
+
+"/fortnite/api/cloudstorage/system/a22d837b6a2b46349421259c0a5411bf" - DefaultGame.ini
+
+"/fortnite/api/cloudstorage/system/mhl5jvb7fm85e157u49k1lbf8p9kpj50" - DefaultInput.ini
+
+"/fortnite/api/cloudstorage/system/c52c1f9246eb48ce9dade87be5a66f29" - DefaultRuntimeOptions.ini
+*/
+   
    //token
    app.get("/fortnite/api/statsv2/account/:accountId", (req, res) => {
       //todo
@@ -244,9 +266,9 @@ module.exports = (app) => {
    );
    app.post(
       "/fortnite/api/game/v2/creative/discovery/surface/:accountId",
-      (req, res) =>
+      (req, res) => {
          res.json(require("../lib/creativeDiscovery.json"));
-   );
+      });
    app.post(
       "/fortnite/api/game/v2/profileToken/verify/:accountId",
       (req, res) => {
