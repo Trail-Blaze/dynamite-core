@@ -1,6 +1,6 @@
 /*
 fortnite-api.js - Does some magic UwUs to Fortnite 
-Copyright (C) 2021  Immanuel Garcia
+Copyright (C) 2021  Immanuel Garcia, John Mcdowall
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 2 of the License, or
@@ -39,17 +39,6 @@ module.exports = (app) => {
 
    app.get("/fortnite/api/cloudstorage/system/config", (req, res) => {
       res.json(require("../lobby/systemConfig.json"));
-   });
-
-
-   app.get("/fortnite/api/storeaccess/v1/request_access/", (req, res) => {
-      res.status(204).end()
-   });
-
-
-
-   app.get("/api/v1/Fortnite/get", (req, res) => {
-      res.status(204).send();
    });
 
    //cloudstorage
@@ -117,51 +106,6 @@ module.exports = (app) => {
       }
    });
 
-
-/*
-  app.get(
-    "/fortnite/api/cloudstorage/system/3460callbacke1c57d4a838ace32951a4d7171",
-    (req, res) => {
-      res.setHeader("content-type", "application/octet-stream");
-      res.sendFile(path.join(__dirname, "../lobby/DefaultEngine.ini"));
-    }
-  );
-
-
-  app.get(
-    "/fortnite/api/cloudstorage/system/a22d837b6a2b46349421259c0a5411bf",
-    (req, res) => {
-      res.setHeader("content-type", "application/octet-stream");
-      res.sendFile(path.join(__dirname, "../lobby/DefaultGame.ini"));
-    }
-  );
-
-  app.get(
-    "/fortnite/api/cloudstorage/system/mhl5jvb7fm85e157u49k1lbf8p9kpj50",
-    (req, res) => {
-      res.setHeader("content-type", "application/octet-stream");
-      res.sendFile(path.join(__dirname, "../lobby/DefaultInput.ini"));
-    }
-  );
-
-
-  app.get(
-    "/fortnite/api/cloudstorage/system/c52c1f9246eb48ce9dade87be5a66f29",
-    (req, res) => {
-      res.setHeader("content-type", "application/octet-stream");
-      res.sendFile(
-        path.join(__dirname, "../lobby/DefaultRuntimeOptions.ini")
-      );
-    }
-  );
-
-  app.get("/fortnite/api/cloudstorage/system/DefaultGame.ini", (req, res) => {
-    res.setHeader("content-type", "application/octet-stream");
-    res.sendFile(path.join(__dirname, "../lobby/DefaultGame.ini"));
-  });
-*/
-
-
    app.get("/fortnite/api/cloudstorage/user/:accountId", (req, res) => {
       let settings = fs.readFileSync(path.join(hotfixPath, "settings.bin"));
 
@@ -209,12 +153,7 @@ module.exports = (app) => {
    );
 
    //END
-
-   //find player by ID
-   app.get("/fortnite/api/matchmaking/session/findPlayer/:id", (req, res) => {
-      res.json([]);
-   });
-
+  
    //token
    app.get("/fortnite/api/statsv2/account/:accountId", (req, res) => {
       //todo
@@ -282,20 +221,6 @@ module.exports = (app) => {
             ]);
          });
    });
-
-   app.get("/fortnite/api/game/v2/creative/favorites/:accountId", (req, res) =>
-      res.json({
-         results: [],
-         hasMore: false,
-      })
-   );
-
-   app.get("/fortnite/api/game/v2/creative/history/:accountId", (req, res) =>
-      res.json({
-         results: [],
-         hasMore: false,
-      })
-   );
 
    app.get("/links/api/fn/mnemonic/:playlist", (req, res) =>
       res.json({
