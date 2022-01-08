@@ -1,6 +1,6 @@
 /*
 affiliate-api.js
-Copyright (C) 2021  John McDowall
+Copyright (C) 2021  Immanuel Garcia
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 2 of the License, or
@@ -14,21 +14,18 @@ along with this program.  If not, see http://www.gnu.org/licenses/old-licenses/g
 */
 
 module.exports = (app) => {
-
-//affiliate api (recoded by slushy#0001)
-  app.get("/affiliate/api/public/affiliates/slug/:slug", async (req, res) => {
-    const SAC = require("./SAC.json");
-    SAC.forEach(code => {
-        if (req.params.slug.toLowerCase() == code.toLowerCase()) {
-            return res.json({
-                "id": code,
-                "slug": code,
-                "displayName": code,
-                "status": "ACTIVE",
-                "verified": false
-            });
-        }
-    })
-    res.json({});
-})
+  
+//affiliate api
+  app.get(
+    "/affiliate/api/public/affiliates/slug/:affiliateName",
+    (req, res) => {
+      res.json({
+        id: "aabbccddeeff11223344556677889900",
+        slug: req.params.affiliateName,
+        displayName: req.params.affiliateName,
+        status: "ACTIVE",
+        verified: true,
+      });
+    }
+  );
 };
