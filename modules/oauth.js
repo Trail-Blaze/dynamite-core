@@ -152,7 +152,7 @@ module.exports = (app) => {
       res.json({
          accountId: req.params.accountId,
          deviceId: "devdynamite43Express",
-         secret: "FuckKemo",
+         secret: "dyna",
       })
    );
 };
