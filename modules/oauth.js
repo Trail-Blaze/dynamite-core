@@ -1,6 +1,6 @@
 /*
 oauth.js - Handles authentication for the server
-Copyright (C) 2021  Immanuel Garcia, John Mcdowall
+Copyright (C) 2021  Immanuel Garcia
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 2 of the License, or
@@ -34,6 +34,42 @@ module.exports = (app) => {
 
    //token
    app.post("/account/api/oauth/token", (req, res) => {
+      userName = "";
+      displayName = "";
+      if (req.body.username) {
+        thisUser = req.body.username.split("@")[0];
+        userName = thisUser
+      }
+      else if (req.body.email) userName = req.body.email.split("@")[0];
+      else displayName = `InvalidUser${Math.random().toString().substring(15)}`;
+      accountId = displayName.replace(/ /g, "_");
+      if (!accountId.startsWith("InvalidUser")) {
+         var profileId = "athena";
+         var profileData = Profile.readProfile(accountId, profileId);
+         if (!profileData) {
+            profileData = Profile.readProfileTemplate(profileId);
+            if (!profileData) {
+               throw new ApiException(
+                  errors.com.epicgames.modules.profiles.operation_forbidden
+               ).with(profileId);
+            }
+            profileData.created = profileData.updated =
+               new Date().toISOString();
+            profileData["_id"] = accountId;
+            profileData.accountId = accountId;
+            //await Profile.updatedCos(profileData);
+            try {
+               fs.mkdirSync(`./home/${accountId}/profile`, { recursive: true });
+               Profile.saveProfile(accountId, profileId, profileData);
+            } catch (e) {
+               console.log("Failed creating profile!");
+               throw e;
+            }
+         }
+      }
+
+      // Invalid User
+      else userName = thisUser;
       res.json({
          access_token: crypto.randomBytes(32).toString("hex"),
          expires_in: 80000, // Matches Expire_At
@@ -51,15 +87,34 @@ module.exports = (app) => {
          internal_client: true,
          client_service: "Fortnite",
          scope: [],
-         displayName: req.body.username || "BlazeUser",
+         displayName: userName,
          app: "Fortnite",
-         in_app_id: req.body.username || "BlazeUser"
+         in_app_id: userName
       });
    });
-   
    //verification
    app.get("/account/api/oauth/verify", (req, res) => {
-      res.status(204).end();
+      res.json({
+         access_token: crypto.randomBytes(32).toString("hex"),
+         expires_in: 80000, // Matches Expire_At
+         expires_at: new Date(
+            (new Date().getTime() / 1000 + 80000) * 1000
+         ).toISOString(), // Zulu Time --> Token Expires in 1 Day Time
+         token_type: "bearer",
+         refresh_token: crypto.randomBytes(32).toString("hex"),
+         refresh_expires: 800, // Matches Expire_At
+         refresh_expires_at: new Date(
+            (new Date().getTime() / 1000 + 800) * 1000
+         ), // Zulu Time --> Refresh Token Expires in 7 minutes time
+         account_id: userName,
+         client_id: "clidynamite43obprerelease",
+         internal_client: true,
+         client_service: "Fortnite",
+         scope: [],
+         displayName: userName,
+         app: "Fortnite",
+         in_app_id: userName
+      });
    });
    //sign out
    app.delete("/account/api/oauth/sessions/kill", (req, res) => {
