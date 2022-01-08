@@ -1,7 +1,7 @@
 /*
 App.js - This script creates a static server, hosts files from the "public" directory and
 finds and empty port to listen on
-Copyright (C) 2021  Immanuel Garcia, Luke Harris, Kai, Grayson Stowell, John McDowall
+Copyright (C) 2021  Immanuel Garcia, Luke Harris, Kai, Grayson
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 2 of the License, or
@@ -52,7 +52,6 @@ ALSO MAKE SURE TO UPDATE THE VERSION VARIABLE!!!
 1.42.8 - CHOICE OF PORT USING PORTFILE + APP.JS CODE REFLOW TO PREVENT RACE CONDITIONS [ ALEXDEV404 ]
 1.24.8 - "SAC" AFFILIATE API ADDITIONS + REWRITE [ SLUSHNIX ]
 1.42.8 - 400 LINES NOW! [ ALEXDEV404 ]
-1.42.8 - SIMPLIFY OAUTH.JS [ SLUSHNIX ]
 
 */
 
