@@ -46,7 +46,7 @@ module.exports = (app) => {
          refresh_expires_at: new Date(
             (new Date().getTime() / 1000 + 800) * 1000
          ), // Zulu Time --> Refresh Token Expires in 7 minutes time
-         account_id: userName,
+         account_id: crypto.randomBytes(32).toString("hex"),
          client_id: "clidynamite43obprerelease",
          internal_client: true,
          client_service: "Fortnite",
