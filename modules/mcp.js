@@ -7,6 +7,10 @@ Array.prototype.insert = function (index, item) {
    this.splice(index, 0, item);
 };
 module.exports = (app) => {
+    app.post("/fortnite/api/game/v2/profile/:accountId/client/MarkItemSeen", (req, res) => {
+	   res.status(200);
+	   res.end();
+   })
    app.post(
       "/fortnite/api/game/v2/profile/:accountId/client/:command",
       function (req, res) {
