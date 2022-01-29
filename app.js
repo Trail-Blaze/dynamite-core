@@ -76,7 +76,7 @@ const filename_log = "./lib/port.json";
 
 const REQ_LOGGING = true; // Request Logging is set to false by default
 const version = "1.42.7";
-const cyear = 2021;
+const cyear = 2022;
 const authors = "Immanuel Garcia, Luke Harris, Kai, Grayson Stowell, Scott, John McDowall";
 const windowTitle = "Blaze Server";
 const b_logo =
