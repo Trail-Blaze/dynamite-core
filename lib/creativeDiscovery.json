@@ -1,12 +1,12 @@
 {
-            "Panels": [
-               {
-                  "PanelName": "Most Popular",
-                  "Pages": [
-                     {
-                        "results": [
-                           {
-                              "linkData": {
+    "Panels": [
+        {
+            "PanelName": "Most Popular",
+            "Pages": [
+                {
+                    "results": [
+                        {
+                            "linkData": {
                                 "mnemonic": "playlist_battlelab",
                                 "linkType": "BR:Playlist",
                                 "active": true,
@@ -19,32 +19,31 @@
                                         "override_playlist": "playlist_battlelab"
                                     },
                                 },
-                              },
-                              "isFavorite": false,
-                           },
-                           {
-                                "linkData": {
+                            },
+                            "isFavorite": false,
+                        },
+                        {
+                            "linkData": {
                                 " mnemonic": "playlist_defaultsolo",
-                                 "linkType": "BR:Playlist",
-                                 "active": true,
-                                 "version": 93,
-                                 "accountId": "epic",
-                                 "creatorName": "Epic",
-                                 "descriptionTags": [],
-                                 "metadata": {
+                                "linkType": "BR:Playlist",
+                                "active": true,
+                                "version": 93,
+                                "accountId": "epic",
+                                "creatorName": "Epic",
+                                "descriptionTags": [],
+                                "metadata": {
                                     "matchmaking": {
-                                       "override_playlist":
-                                          "playlist_defaultsolo",
+                                        "override_playlist":
+                                            "playlist_defaultsolo",
                                     },
-                                 },
-                              },
-                              "isFavorite": false,
-                           },                      
-                        ],
-                        "hasMore": false,
-                     },
-                  ],
-               },
+                                },
+                            },
+                            "isFavorite": false,
+                        },
+                    ],
+                    "hasMore": false,
+                },
             ],
-            "TestCohorts": ["V2_17_50_Launch"],
+        },
+    ]
 }
