@@ -17,7 +17,7 @@ const axios = require("axios");
 
 module.exports = (app) => {
 	app.get('/fortnite/api/storefront/v2/catalog', function (req, res) {
-        res.json(require("../lib/shop.json"));
+        res.json(require("../lib/shop.js"));
 	});
 	
 	app.get("/catalog/api/shared/bulk/offers", function (req, res) { 
