@@ -1,6 +1,11 @@
 var date = new Date();
 
 module.exports = (app) => {
+    app.get("/content/api/pages/fortnite-game/media-events", (req, res) => {
+		res.json({ "jcr:isCheckedOut": true, "mediaEvents": { "_type": "Fortnite - Media Event List" }, "_title": "media-events", "_noIndex": false, "jcr:baseVersion": "a7ca237317f1e721b1c50b-f7e1-48b0-bc1b-733ef38709c0", "_activeDate": "2022-01-12T01:43:01.626Z", "lastModified": "2022-01-24T17:15:41.040Z", "_locale": "en-US", "_suggestedPrefetch": [] })
+        res.status(200)
+		res.end()
+	})
     app.get(["/content/api/pages/fortnite-game", "/content/api/pages/"], (req, res) => {
         res.json({
             _title: 'Fortnite Game',
