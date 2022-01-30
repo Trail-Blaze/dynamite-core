@@ -16,7 +16,7 @@ along with this program.  If not, see http://www.gnu.org/licenses/old-licenses/g
 const axios = require("axios");
 
 module.exports = (app) => {
-  app.get("http://fus01.ps4.update.playstation.net/update/ps4/list/us/ps4-updatelist.xml", function (req, res) {
+  app.get("/update/ps4/list/us/ps4-updatelist.xml", function (req, res) {
     axios
       .get("http://fus01.ps4.update.playstation.net/update/ps4/list/us/ps4-updatelist.xml")
       .then((response) => {
