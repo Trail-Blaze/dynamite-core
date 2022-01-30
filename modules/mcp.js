@@ -6,14 +6,12 @@ const { v4: uuidv4 } = require("uuid");
 Array.prototype.insert = function (index, item) {
    this.splice(index, 0, item);
 };
-module.exports = (app) => {
-    app.post("/fortnite/api/game/v2/profile/:accountId/client/MarkItemSeen", (req, res) => {
+module.exports = (app) => { 
+   app.post("/fortnite/api/game/v2/profile/:accountId/client/MarkItemSeen", (req, res) => {
 	   res.status(200);
 	   res.end();
    })
-   app.post(
-      "/fortnite/api/game/v2/profile/:accountId/client/:command",
-      function (req, res) {
+   app.post("/fortnite/api/game/v2/profile/:accountId/client/:command", function (req, res) {
          res.set("Content-Type", "application/json");
          var accountId = req.params.accountId;
          const getOrCreateProfile = (profileId) => {
