@@ -1,5 +1,5 @@
 /*
-updatelist.js - Handles the PS4 updatelist response
+updatelist-ps4.js - Handles the PS4 updatelist-ps4 response
 Copyright (C) 2021  Immanuel Garcia
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
