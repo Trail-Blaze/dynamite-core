@@ -16,9 +16,9 @@ along with this program.  If not, see http://www.gnu.org/licenses/old-licenses/g
 const axios = require("axios");
 
 module.exports = (app) => {
-	app.get('/fortnite/api/storefront/v2/catalog', function (req, res) {
-        res.json(require("../lib/shop.js"));
-	});
+	//app.get('/fortnite/api/storefront/v2/catalog', function (req, res) {
+     //   res.json(require("../lib/shop.json"));
+	//});
 	
 	app.get("/catalog/api/shared/bulk/offers", function (req, res) { 
 		res.json({}); 
