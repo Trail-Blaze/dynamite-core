@@ -1,6 +1,6 @@
 /*
 region.js
-Copyright (C) 2021  Immanuel Garcia
+Copyright (C) 2021  Scott
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 2 of the License, or
