@@ -1,3 +1,5 @@
+> This backend is now **deprecated** and will be removed in a future update. These future changes may affect your use of Blaze. This information is subject to change with future releases. It is **tentative**.
+
 <!-- # Dynamite Core Backend **Beta** -->
 
 <!-- ![Screenshot 2021-05-10 145346](https://user-images.githubusercontent.com/34188635/117723405-93a65500-b19f-11eb-8ac2-02061bb79e3e.png) -->
