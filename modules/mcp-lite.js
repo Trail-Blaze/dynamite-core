@@ -52,7 +52,7 @@ module.exports = (app) => {
     ) {
       try {
         console.log(`NO PROFILE FOUND! Creating one in /home/${accountId} dir`);
-        fs.mkdirSync(`./home/${accountId}/profile`, {
+        fs.mkdirSync(path.join(profileDirectory, `${accountId}/profile/`), {
           recursive: true,
         });
         fs.copyFileSync(
