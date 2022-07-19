@@ -14,14 +14,24 @@ along with this program.  If not, see http://www.gnu.org/licenses/old-licenses/g
 */
   
 const RPC = require("discord-rpc");
-const rpc = new RPC.Client({
+let rpc;
+try{
+ rpc = new RPC.Client({
     transport: "ipc"
 })
-
+}
+catch(error){
+  rpc = null;
+  return;
+}
 module.exports = (app) => {
+  if(rpc === null) {
+    console.warn("[RPC] RPC functionality not supported on this client. Not starting the rich presence server.") 
+    return;
+  }
     rpc.on("ready", async() => {
         rpc.setActivity({
-            details: "first and last to do it",
+            details: "The first but never the last",
             largeImageKey: "large",
             largeImageText: "Join Blaze Now!",
             startTimestamp: new Date(),
