@@ -1,0 +1,4 @@
+name: "Dynamite"
+type: "Standard, No-ingame"
+rel: "1.42.7"
+entrypoint: "node app"
